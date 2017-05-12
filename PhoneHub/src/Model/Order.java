@@ -4,7 +4,7 @@ import java.sql.Time;
 
 public class Order {
 
-	private String userId;
+	private int userId;
 	private float amount;
 	private Time createTime;
 	private Time orderTime;
@@ -15,11 +15,11 @@ public class Order {
 		super();
 	}
 
-	public String getUserId() {
+	public int getUserId() {
 		return userId;
 	}
 
-	public void setUserId(String userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 
