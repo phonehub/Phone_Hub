@@ -1,27 +1,58 @@
 package cn.edu.zhku.phonehub.product.model;
 
 public class Product {
-	private int productId;
-	private String productName;
-	private float price;
-	private String cpu;
-	private String ram; // 运行内存
-	private String brand;
-	private String screenSize;
-	private String size; // 体积
-	private String networkType;
-	private String color;
-	private String system;
-	private String memory; // 手机存储大小
-	private String battery;
-	private String formCamera; // 前置摄像头
-	private String behindCamera;
-	private int coreNum; // cpu核心数
-	private int storeId;
-	private float productScore; // 商品评分
-	private int num; // 库存
-	private String weight;
-	private String describe; // 描述
+	private int productId;			//主键（数据库自增）
+	private int storeId;			//店铺ID（主键）
+	private String productName;		//商品名称
+	private float price;			//商品价格
+	private String cpu;				//CPU参数
+	private String ram; 			//运行内存
+	private String brand;			//手机品牌
+	private String screenSize;		//屏幕大小
+	private String size; 			//体积（长*宽*厚度，由业务计算）
+	private String networkType;		//网络类型
+	private String color;			//颜色
+	private String system;			//操作系统
+	private String memory; 			//手机存储大小
+	private String battery;			//电池容量
+	private String formCamera; 		//前置摄像头
+	private String behindCamera;	//后置摄像头
+	private int coreNum; 			//cpu核心数
+	private float productScore; 	//商品评分
+	private int num; 				//库存
+	private String weight;			//重量
+	private String describe; 		//产品描述
+	private String image1;			//图片1
+	private String image2;			//图片2
+	private String image3;			//图片3
+	
+	public Product() {
+		super();
+	}
+
+	public String getImage1() {
+		return image1;
+	}
+
+	public void setImage1(String image1) {
+		this.image1 = image1;
+	}
+
+	public String getImage2() {
+		return image2;
+	}
+
+	public void setImage2(String image2) {
+		this.image2 = image2;
+	}
+
+	public String getImage3() {
+		return image3;
+	}
+
+	public void setImage3(String image3) {
+		this.image3 = image3;
+	}
 
 	public int getProductId() {
 		return productId;
