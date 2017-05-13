@@ -4,12 +4,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import cn.edu.zhku.phonehub.product.model.Product;
+import cn.edu.zhku.phonehub.product.model.SearchProductEntity;
+import cn.edu.zhku.phonehub.product.model.SearchProductInfo;
 import cn.edu.zhku.phonehub.product.service.SearchProductServer;
 /*
  * 类名：
@@ -39,16 +41,32 @@ public class SearchProductCtrl extends HttpServlet {
 		//从jsp中获得查找类型、查找数据
 		String searchType = (String)request.getParameter("searchType");
 		String searchInfo = (String)request.getParameter("searchInfo");
+		System.out.println("ctrl----searchType="+searchType);
+		System.out.println("ctrl----searchInfo="+searchInfo);
+		//封装
+		SearchProductEntity searchGoodsEntity = new SearchProductEntity();
+		searchGoodsEntity.setSearchType(searchType);
+		searchGoodsEntity.setSearchInfo(searchInfo);
 		
-		ArrayList<Product> productList = SearchProductServer.getProductList();
-		
+		RequestDispatcher rd = null;
+		ArrayList<SearchProductInfo> productList = null;
+		try {
+			productList = SearchProductServer.getProductList(searchGoodsEntity);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			request.setAttribute("productList", productList);
+			rd = request.getRequestDispatcher("/searchProduct/showSearchProduct.jsp");
+			rd.forward(request, response);
+			
+		}
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
+//		response.setContentType("text/html");
+//		PrintWriter out = response.getWriter();
 		this.doGet(request, response);
 	}
 
