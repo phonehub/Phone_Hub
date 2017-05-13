@@ -1,4 +1,4 @@
-package cn.edu.zhku.phonehub.product;
+package cn.edu.zhku.phonehub.product.model;
 
 public class Product {
 	private int productId;
