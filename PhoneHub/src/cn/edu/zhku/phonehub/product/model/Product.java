@@ -15,17 +15,35 @@ public class Product {
 	private String system;			//操作系统
 	private String memory; 			//手机存储大小
 	private String battery;			//电池容量
-	private String formCamera; 		//前置摄像头
+	private String frontCanmera; 		//前置摄像头
 	private String behindCamera;	//后置摄像头
 	private int coreNum; 			//cpu核心数
 	private float productScore; 	//商品评分
 	private int num; 				//库存
 	private String weight;			//重量
-	private String describe; 		//产品描述
+	private String description; 		//产品描述
 	private String image1;			//图片1
 	private String image2;			//图片2
 	private String image3;			//图片3
 	
+	
+	
+	
+	@Override
+	public String toString() {
+		return "Product [productId=" + productId + ", storeId=" + storeId
+				+ ", productName=" + productName + ", price=" + price
+				+ ", cpu=" + cpu + ", ram=" + ram + ", brand=" + brand
+				+ ", screenSize=" + screenSize + ", size=" + size
+				+ ", networkType=" + networkType + ", color=" + color
+				+ ", system=" + system + ", memory=" + memory + ", battery="
+				+ battery + ", frontCanmera=" + frontCanmera + ", behindCamera="
+				+ behindCamera + ", coreNum=" + coreNum + ", productScore="
+				+ productScore + ", num=" + num + ", weight=" + weight
+				+ ", description=" + description + ", image1=" + image1 + ", image2="
+				+ image2 + ", image3=" + image3 + "]";
+	}
+
 	public Product() {
 		super();
 	}
@@ -150,12 +168,12 @@ public class Product {
 		this.battery = battery;
 	}
 
-	public String getFormCamera() {
-		return formCamera;
+	public String getFrontCanmera() {
+		return frontCanmera;
 	}
 
-	public void setFormCamera(String formCamera) {
-		this.formCamera = formCamera;
+	public void setFrontCanmera(String frontCanmera) {
+		this.frontCanmera = frontCanmera;
 	}
 
 	public String getBehindCamera() {
@@ -206,12 +224,12 @@ public class Product {
 		this.weight = weight;
 	}
 
-	public String getDescribe() {
-		return describe;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDescribe(String describe) {
-		this.describe = describe;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public String getNetworkType() {
