@@ -48,7 +48,7 @@ public class SearchProductCtrl extends HttpServlet {
 		searchGoodsEntity.setSearchType(searchType);
 		searchGoodsEntity.setSearchInfo(searchInfo);
 		
-		RequestDispatcher rd = null;
+		
 		ArrayList<SearchProductInfo> productList = null;
 		try {
 			productList = SearchProductServer.getProductList(searchGoodsEntity);
@@ -58,6 +58,7 @@ public class SearchProductCtrl extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally{
+			RequestDispatcher rd = null;
 			request.setAttribute("productList", productList);
 			rd = request.getRequestDispatcher("/searchProduct/showSearchProduct.jsp");	//显示商品概要信息的界面
 			rd.forward(request, response);
@@ -67,8 +68,6 @@ public class SearchProductCtrl extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-//		response.setContentType("text/html");
-//		PrintWriter out = response.getWriter();
 		this.doGet(request, response);
 	}
 

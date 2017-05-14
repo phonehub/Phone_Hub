@@ -63,6 +63,8 @@ public class SearchProductDao {
 			String storeScore = rs.getString("storeScore");			//店铺评分
 			String userName = rs.getString("userName");				//店铺老板名称
 			String image1 = rs.getString("image1");					//图片1
+			int productId = rs.getInt("productId");					//商品ID
+			int storeId = rs.getInt("stroeId");						//店铺ID
 			
 			SearchProductInfo product = new SearchProductInfo();
 			product.setProductName(productName);
@@ -73,6 +75,8 @@ public class SearchProductDao {
 			product.setStoreScore(storeScore);
 			product.setUserName(userName);
 			product.setImage1(image1);
+			product.setProductId(productId);
+			product.setStoreId(storeId);
 			
 			productList.add(product);
 		}

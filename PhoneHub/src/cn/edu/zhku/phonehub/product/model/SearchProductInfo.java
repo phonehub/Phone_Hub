@@ -2,6 +2,8 @@ package cn.edu.zhku.phonehub.product.model;
 
 public class SearchProductInfo {
 	
+	private int productId;			//商品ID（用于查找详细商品信息）
+	private int storeId;			//店铺ID（用于查找详细商品信息）
 	private String productName;		//商品名称
 	private float price;			//商品价格
 	private String storeName;		//店铺名称
@@ -22,6 +24,20 @@ public class SearchProductInfo {
 	}
 	public SearchProductInfo() {
 		super();
+	}
+	
+	
+	public int getProductId() {
+		return productId;
+	}
+	public void setProductId(int productId) {
+		this.productId = productId;
+	}
+	public int getStoreId() {
+		return storeId;
+	}
+	public void setStoreId(int storeId) {
+		this.storeId = storeId;
 	}
 	public String getProductName() {
 		return productName;

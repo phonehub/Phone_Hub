@@ -30,7 +30,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
   	<%
   		ArrayList<SearchProductInfo> productList = (ArrayList<SearchProductInfo>)request.getAttribute("productList");
-  		out.write("productList:--"+productList);
+  		//if(productList!=null)
+  			out.write("productList:--"+productList);
+  	 %>
+  	 
+  	 <%
+  		Product productDetail = (Product)request.getAttribute("productDetail");
+  		out.write("productDetail:--"+productDetail);
   	 %>
   	
   

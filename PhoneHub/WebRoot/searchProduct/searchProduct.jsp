@@ -33,5 +33,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		</form>
   	</div>
   
+  	<br>
+  	<div>
+  		<form name="searchProduct" action="./servlet/ShowProductDetailCtrl">
+	  		<input type="text" name="productId" value="1">
+	  		<br>
+	  		<input type="submit" value="商品详细信息">
+  		</form>
+  	</div>
+  
   </body>
 </html>
