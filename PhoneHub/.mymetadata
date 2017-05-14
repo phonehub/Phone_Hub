@@ -3,7 +3,7 @@
   type="WEB"
   name="PhoneHub"
   id="myeclipse.1494424866367"
-  context-root="/FMall"
+  context-root="/PhoneHub"
   j2ee-spec="5.0"
   archive="PhoneHub.war">
   <attributes>
