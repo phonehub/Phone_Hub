@@ -52,12 +52,14 @@ public class SearchProductCtrl extends HttpServlet {
 		ArrayList<SearchProductInfo> productList = null;
 		try {
 			productList = SearchProductServer.getProductList(searchGoodsEntity);
+			System.out.println("ctrl-----productList="+productList);
+			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally{
 			request.setAttribute("productList", productList);
-			rd = request.getRequestDispatcher("/searchProduct/showSearchProduct.jsp");
+			rd = request.getRequestDispatcher("/searchProduct/showSearchProduct.jsp");	//显示商品概要信息的界面
 			rd.forward(request, response);
 			
 		}

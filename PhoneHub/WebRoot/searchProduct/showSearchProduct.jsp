@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
   	<%
   		ArrayList<SearchProductInfo> productList = (ArrayList<SearchProductInfo>)request.getAttribute("productList");
-  		out.write("hahah");
+  		out.write("productList:--"+productList);
   	 %>
   	
   

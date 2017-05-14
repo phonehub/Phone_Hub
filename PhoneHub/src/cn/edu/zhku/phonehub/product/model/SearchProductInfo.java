@@ -12,6 +12,14 @@ public class SearchProductInfo {
 	private String image1;			//图片1
 	
 	
+	
+	@Override
+	public String toString() {
+		return "SearchProductInfo [productName=" + productName + ", price="
+				+ price + ", storeName=" + storeName + ", brand=" + brand
+				+ ", location=" + location + ", storeScore=" + storeScore
+				+ ", userName=" + userName + ", image1=" + image1 + "]";
+	}
 	public SearchProductInfo() {
 		super();
 	}
