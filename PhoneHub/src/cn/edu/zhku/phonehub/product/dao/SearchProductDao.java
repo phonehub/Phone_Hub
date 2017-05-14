@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import cn.edu.zhku.phonehub.product.model.Product;
 import cn.edu.zhku.phonehub.product.model.SearchProductEntity;
 import cn.edu.zhku.phonehub.product.model.SearchProductInfo;
+import cn.edu.zhku.phonehub.product.util.ConnectionManager;
 
 /*
  * 类名：SearchProductDao
@@ -27,32 +28,28 @@ public class SearchProductDao {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		String sqlQuery = null;
-		// 通过反射机制动态的引入应用的数据库的驱动
-		Class.forName("com.mysql.jdbc.Driver");
-		conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/phonehub",
-				"root", "");
 		
+		// 通过反射机制动态的引入应用的数据库的驱动
+		conn = ConnectionManager.getConnection();
+		if(conn==null){
+			throw new Exception("数据库连接不成功");
+		}
+		
+		String sqlQuery = null;
 		if(searchProductEntity.getSearchType().equals("店铺")){
 			sqlQuery = "Select * from searchProduct where storeName like ?";
 		}
 		else if(searchProductEntity.getSearchType().equals("商品")){
-			sqlQuery = "Select * from searchProduct where productName = ?";
+			sqlQuery = "Select * from searchProduct where productName like ?";
 		}
 		else if(searchProductEntity.getSearchType().equals("品牌")){
 			sqlQuery = "Select * from searchProduct where brand like ?";
 		}
-//		String searchInfo = "%"+searchProductEntity.getSearchInfo()+"%";
-//		String searchInfo = "%"+"小米"+"%";
-//		String searchInfo = "小米6";
-		String searchInfo = new String("小米6".toString().getBytes("UTF-8"));
-		System.out.println("dao-------searchInfo="+searchInfo);
 		
+		String searchInfo = "%"+searchProductEntity.getSearchInfo()+"%";
 		ps = conn.prepareStatement(sqlQuery);
 		ps.setString(1, searchInfo);
-		System.out.println("dao-----ps="+new String(ps.toString().getBytes("UTF-8")));
 		rs = ps.executeQuery();
-		
 		
 		while(rs.next()){
 			if(productList == null){
@@ -76,8 +73,6 @@ public class SearchProductDao {
 			product.setStoreScore(storeScore);
 			product.setUserName(userName);
 			product.setImage1(image1);
-			
-			System.out.println("dao----productName="+productName);
 			
 			productList.add(product);
 		}

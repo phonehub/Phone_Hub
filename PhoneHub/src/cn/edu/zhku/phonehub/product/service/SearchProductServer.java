@@ -23,6 +23,7 @@ public class SearchProductServer {
 		
 		SearchProductDao searchProductDao = new SearchProductDao();
 		productList = searchProductDao.getProductFromDb(searchProductEntity);
+		System.out.println("service-----productList="+productList);
 		
 		return productList;
 	}
