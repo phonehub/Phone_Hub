@@ -30,27 +30,27 @@ public class ShowProductDetailDao {
 		rs = ps.executeQuery();
 		
 		if(rs.next()){
-			 int productId_ = rs.getInt("productId");			//主键（数据库自增）
-			 int storeId = rs.getInt("storeId");				//店铺ID（主键）
+			 int productId_ = rs.getInt("productId");				//主键（数据库自增）
+			 int storeId = rs.getInt("storeId");					//店铺ID（主键）
 			 String productName = rs.getString("productName");		//商品名称
-			 float price = rs.getFloat("price");				//商品价格
-			 String cpu = rs.getString("cpu");				//CPU参数
-			 String ram = rs.getString("ram"); 				//运行内存
-			 String brand = rs.getString("brand");				//手机品牌
-			 String screenSize = rs.getString("screenSize");			//屏幕大小
-			 String size = rs.getString("size");; 				//体积（长*宽*厚度，由业务计算）
+			 float price = rs.getFloat("price");					//商品价格
+			 String cpu = rs.getString("cpu");						//CPU参数
+			 String ram = rs.getString("ram"); 						//运行内存
+			 String brand = rs.getString("brand");					//手机品牌
+			 String screenSize = rs.getString("screenSize");		//屏幕大小
+			 String size = rs.getString("size");; 					//体积（长*宽*厚度，由业务计算）
 			 String networkType = rs.getString("networkType");;		//网络类型
-			 String color = rs.getString("color");;				//颜色
+			 String color = rs.getString("color");;					//颜色
 			 String system = rs.getString("system");;				//操作系统
-			 String memory = rs.getString("memory");; 			//手机存储大小
-			 String battery = rs.getString("battery");;			//电池容量
-			 String frontCanmera = rs.getString("frontCanmera");; 		//前置摄像头
-			 String behindCamera = rs.getString("behindCamera");;		//后置摄像头
-			 int coreNum = rs.getInt("coreNum"); 				//cpu核心数
+			 String memory = rs.getString("memory");; 				//手机存储大小
+			 String battery = rs.getString("battery");;				//电池容量
+			 String frontCanmera = rs.getString("frontCanmera");; 	//前置摄像头
+			 String behindCamera = rs.getString("behindCamera");;	//后置摄像头
+			 int coreNum = rs.getInt("coreNum"); 					//cpu核心数
 			 float productScore = rs.getFloat("productScore"); 		//商品评分
-			 int num = rs.getInt("num"); 					//库存
+			 int num = rs.getInt("num"); 							//库存
 			 String weight = rs.getString("weight");;				//重量
-			 String description = rs.getString("description");; 			//产品描述
+			 String description = rs.getString("description");; 	//产品描述
 			 String image1 = rs.getString("image1");;				//图片1
 			 String image2 = rs.getString("image2");;				//图片2
 			 String image3 = rs.getString("image3");;				//图片3
@@ -85,9 +85,6 @@ public class ShowProductDetailDao {
 		
 		System.out.println("dao-----product="+product.toString());
 		return product;
-		
-		
-		
 	}
 	
 	

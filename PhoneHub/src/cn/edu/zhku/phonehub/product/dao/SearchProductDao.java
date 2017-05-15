@@ -37,13 +37,13 @@ public class SearchProductDao {
 		
 		String sqlQuery = null;
 		if(searchProductEntity.getSearchType().equals("店铺")){
-			sqlQuery = "Select * from searchProduct where storeName like ?";
+			sqlQuery = "Select * from search_product where storeName like ?";
 		}
 		else if(searchProductEntity.getSearchType().equals("商品")){
-			sqlQuery = "Select * from searchProduct where productName like ?";
+			sqlQuery = "Select * from search_product where productName like ?";
 		}
 		else if(searchProductEntity.getSearchType().equals("品牌")){
-			sqlQuery = "Select * from searchProduct where brand like ?";
+			sqlQuery = "Select * from search_product where brand like ?";
 		}
 		
 		String searchInfo = "%"+searchProductEntity.getSearchInfo()+"%";
@@ -64,7 +64,7 @@ public class SearchProductDao {
 			String userName = rs.getString("userName");				//店铺老板名称
 			String image1 = rs.getString("image1");					//图片1
 			int productId = rs.getInt("productId");					//商品ID
-			int storeId = rs.getInt("stroeId");						//店铺ID
+			int storeId = rs.getInt("storeId");						//店铺ID
 			
 			SearchProductInfo product = new SearchProductInfo();
 			product.setProductName(productName);
