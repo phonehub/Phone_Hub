@@ -30,6 +30,7 @@ public class ShowProductDetailDao {
 		rs = ps.executeQuery();
 		
 		if(rs.next()){
+
 			 int productId_ = rs.getInt("productId");				//主键（数据库自增）
 			 int storeId = rs.getInt("storeId");					//店铺ID（主键）
 			 String productName = rs.getString("productName");		//商品名称
@@ -85,6 +86,7 @@ public class ShowProductDetailDao {
 		
 		System.out.println("dao-----product="+product.toString());
 		return product;
+
 	}
 	
 	

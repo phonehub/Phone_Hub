@@ -37,6 +37,7 @@ public class SearchProductDao {
 		
 		String sqlQuery = null;
 		if(searchProductEntity.getSearchType().equals("店铺")){
+
 			sqlQuery = "Select * from search_product where storeName like ?";
 		}
 		else if(searchProductEntity.getSearchType().equals("商品")){
@@ -65,6 +66,7 @@ public class SearchProductDao {
 			String image1 = rs.getString("image1");					//图片1
 			int productId = rs.getInt("productId");					//商品ID
 			int storeId = rs.getInt("storeId");						//店铺ID
+
 			
 			SearchProductInfo product = new SearchProductInfo();
 			product.setProductName(productName);
