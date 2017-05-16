@@ -10,7 +10,12 @@ public class StoreDao {
 	
 	DBUtil dbUtil = new DBUtil();
 	
-	//对store_table进行插入操作，即创建店铺
+	/**
+	 * 功能：新建店铺
+	 * 作者：yanghang
+	 * @param map
+	 * @return
+	 */
 	public boolean insertStore(Map<String,String> map){
 		String sql = "insert into store_table(" +
 				"userId," +

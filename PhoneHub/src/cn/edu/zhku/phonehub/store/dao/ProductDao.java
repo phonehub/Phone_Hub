@@ -8,6 +8,12 @@ public class ProductDao {
 	
 	DBUtil dbUtil = new DBUtil();
 	
+	/**
+	 * 功能：添加商品
+	 * 作者：yanghang
+	 * @param map
+	 * @return
+	 */
 	public boolean insertProduct(Map<String,String> map){
 		String sql = "insert into product_table(" +
 				"productName," +
