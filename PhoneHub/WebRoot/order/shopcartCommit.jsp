@@ -50,7 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		product2.setProductName("华为P10");
 		product2.setPrice(3588);
 		product2.setImage(null);
-		product2.setColor("玫瑰金");
+		//product2.setColor("玫瑰金");
 		
 		shopCart = new ArrayList<ShopCart>();
 		shopCart.add(product1);

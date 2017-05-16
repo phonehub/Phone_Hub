@@ -44,7 +44,7 @@ public class ShowPreviewOrderDao {
 			 int userId = rs.getInt("userId");					//买家ID
 			 int storeId = rs.getInt("storeId");				//卖家ID
 			 String image = rs.getString("image1");				//商品图片
-			 String productName = rs.getString("productName");		//商品名字
+			 String productName = rs.getString("productName");	//商品名字
 			 String color = rs.getString("color");				//商品颜色
 			 String ram = rs.getString("ram");					//ram
 			 String networkType = rs.getString("networkType");	//网络类型

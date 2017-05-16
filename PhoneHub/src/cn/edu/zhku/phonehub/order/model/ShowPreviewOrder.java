@@ -3,7 +3,7 @@ package cn.edu.zhku.phonehub.order.model;
 public class ShowPreviewOrder {
 
 	private int productId;			//商品ID
-	private int userId;				//买家ID
+	private int userId;				//买家ID 
 	private int storeId;			//卖家ID
 	
 	private String image1;			//商品图片

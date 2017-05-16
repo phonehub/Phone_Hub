@@ -1,6 +1,6 @@
 <%@ page language="java" 
 import="java.util.*" 
-import="cn.edu.zhku.phonehub.order.model.ShowPreviewOrder"
+import="cn.edu.zhku.phonehub.order.model.*"
 import="java.util.ArrayList"
 
 pageEncoding="UTF-8"%>
@@ -14,7 +14,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'showPreviewOrder.jsp' starting page</title>
+    <title>My JSP 'ShowOrder.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -26,29 +26,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
 
   </head>
-
-
-		
-
-
   
   <body>
-  <!-- //这是得不到的 -->
-  <%=session.getAttribute("showPreviewOrder") %>
+  	<%
+  		ShowOrder showOrder = (ShowOrder)request.getAttribute("showOrder");
+  	 	out.write("界面----showOrder="+showOrder.toString());
+  	 
+  	 %>
   
-
-    
-   <form action="./servlet/CommitOrderCtrl">
-   
-   <%
-  	ArrayList<ShowPreviewOrder> showPreviewOrder = (ArrayList<ShowPreviewOrder>)request.getAttribute("showPreviewOrder");
-
-  	out.write("界面---showPreviewOrder="+showPreviewOrder);
-  	//request.setAttribute("previewOrder",showPreviewOrder);//失败
-  	session.setAttribute("previewOrder",showPreviewOrder); //再将预览的商品信息传给CommitOrderCtrl
-   %>
-  	<input type="submit" value="确定">
-   </form>
   
   </body>
 </html>

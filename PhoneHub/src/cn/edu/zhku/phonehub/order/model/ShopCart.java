@@ -1,7 +1,14 @@
 package cn.edu.zhku.phonehub.order.model;
 
-public class ShopCart {
+import java.io.Serializable;
 
+public class ShopCart implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private int userId;				//用户的id
 	private int productId;			//商品的id
 	private int storeId;			//店铺的id
