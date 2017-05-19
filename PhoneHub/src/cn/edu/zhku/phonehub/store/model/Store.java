@@ -9,6 +9,20 @@ public class Store {
 	private String idCardFront;
 	private String idCardBehind;
 	private float storeScore;
+	
+	
+	//-----------------------------
+	public String fevenadd;
+	
+	public String getFevenadd() {
+		return fevenadd;
+	}
+	//-----------------------------
+	
+	
+	public void setFevenadd(String fevenadd) {
+		this.fevenadd = fevenadd;
+	}
 	public int getStoreId() {
 		return storeId;
 	}
