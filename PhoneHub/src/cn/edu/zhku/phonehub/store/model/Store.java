@@ -3,10 +3,10 @@ package cn.edu.zhku.phonehub.store.model;
 public class Store {
 	
 	private int storeId;
-	private int userId;
+	//private int userId;
 	private String storeName;
 	private String location;
-	private String idCardFront;
+	//private String idCardFront;
 	private String idCardBehind;
 	private float storeScore;
 	
@@ -29,12 +29,12 @@ public class Store {
 	public void setStoreId(int storeId) {
 		this.storeId = storeId;
 	}
-	public int getUserId() {
-		return userId;
-	}
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
+//	public int getUserId() {
+//		return userId;
+//	}
+//	public void setUserId(int userId) {
+//		this.userId = userId;
+//	}
 	public String getStoreName() {
 		return storeName;
 	}
@@ -47,12 +47,12 @@ public class Store {
 	public void setLocation(String location) {
 		this.location = location;
 	}
-	public String getIdCardFront() {
-		return idCardFront;
-	}
-	public void setIdCardFront(String idCardFront) {
-		this.idCardFront = idCardFront;
-	}
+//	public String getIdCardFront() {
+//		return idCardFront;
+//	}
+//	public void setIdCardFront(String idCardFront) {
+//		this.idCardFront = idCardFront;
+//	}
 	public String getIdCardBehind() {
 		return idCardBehind;
 	}
