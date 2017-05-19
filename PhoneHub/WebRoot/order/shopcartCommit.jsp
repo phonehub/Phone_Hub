@@ -58,7 +58,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		System.out.println("shopcartCommit-----shopCart="+shopCart);
 		
-		//request.setAttribute("shopCart",shopCart);  //不可以用，因为一旦用这个要用
+		//request.setAttribute("shopCart",shopCart);//不可以用，因为一旦用这个要用
 		//这里只能以如下方式请求转发
 		//request.getRequestDispatcher("b.jsp").forward(request, response);
 		

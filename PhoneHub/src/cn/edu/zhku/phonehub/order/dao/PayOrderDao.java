@@ -1,27 +1,23 @@
 package cn.edu.zhku.phonehub.order.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Time;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
-import cn.edu.zhku.phonehub.order.model.Order;
-import cn.edu.zhku.phonehub.order.model.OrderItem;
-import cn.edu.zhku.phonehub.order.model.OrderOrderItemEntity;
+
 import cn.edu.zhku.phonehub.order.model.OrderProductInfo;
 import cn.edu.zhku.phonehub.order.model.ShowOrder;
 import cn.edu.zhku.phonehub.product.util.ConnectionManager;
 
-public class CommitOrderDao {
+public class PayOrderDao {
 
-	public ShowOrder getCommitOrderFromDb(OrderOrderItemEntity entity) throws Exception{
-		
+	public ShowOrder getPayOrderResultFromDb(int orderId,int userId,String userPassword) throws Exception{
 		ShowOrder showOrder = null;
-		
-		//解封
-		Order order = entity.getOrder();
-		ArrayList<OrderItem> orderItemList = entity.getOrderItemList();
-		
 		
 		//连接数据库
 		Connection conn = null;
@@ -34,59 +30,56 @@ public class CommitOrderDao {
 			throw new Exception("数据库连接不成功");
 		}
 		
-		//插入Order_table
 		String sqlQuery = null;
-		sqlQuery = "Insert into order_table(userId,amount,message,status) values(?,?,?,?)";
+		sqlQuery = "Select * from user_table where userId=? and passWord=?";
 		ps = conn.prepareStatement(sqlQuery);
-		ps.setInt(1, order.getUserId());
-		ps.setFloat(2, order.getAmount());
-		ps.setString(3, order.getMessage());
-		ps.setInt(4, order.getStatus());
-		ps.executeUpdate();
-		
-		//获得orderId
-		sqlQuery = "SELECT MAX(orderId) FROM order_table";
-		ps = conn.prepareStatement(sqlQuery);
+		ps.setInt(1, userId);
+		ps.setString(2, userPassword);
 		rs = ps.executeQuery();
-		rs.next();
-		int orderId = rs.getInt(1);
-		System.out.println("rs--------"+rs.getInt(1));
-		
-		
-		//插入order_item_table  并且减少product_table的数量
-		String reduceNumSqlQuery = "Update product_table set num=num-? where productId = ?";
-		sqlQuery ="Insert into order_item_table(orderId,productId,num,cost) values(?,?,?,?)";
-		for(int i=0;i<orderItemList.size();i++){
-			
+		//判断用户的身份
+		if(!rs.next()){
+			System.out.println("身份认证通失败");
+			return null;
+		}
+		//扣费
+			//获得总价
+			float amount ;
+			sqlQuery = "Select amount from order_table where orderId = ?";
 			ps = conn.prepareStatement(sqlQuery);
-			OrderItem orderItem = orderItemList.get(i);		//获得item
-			orderItem.toString();							//测试输出
 			ps.setInt(1, orderId);
-			ps.setInt(2, orderItem.getProductId());
-			ps.setInt(3, orderItem.getNum());
-			ps.setFloat(4, orderItem.getCost());
-			ps.executeUpdate();
+			rs = ps.executeQuery();
+			if(rs.next()){
+				amount = rs.getFloat("amount");
+				System.out.println("获得总价："+amount);
+			}
+			else{
+				System.out.println("出错！无法获得总价");
+				return null;
+			}
 			
-			ps = conn.prepareStatement(reduceNumSqlQuery);
-			ps.setInt(1, orderItem.getNum());
-			ps.setInt(2, orderItem.getProductId());
-			ps.executeUpdate();
-		}
-		
-		//删除shopcart_table中对应商品
-		for(int i=0;i<orderItemList.size();i++){
-			sqlQuery ="Delete from shopcart_table where userId = ? and productId =?";
+			//更新用户钱包
+			sqlQuery = "Update user_table set wallet=wallet-? where userId = ?";
 			ps = conn.prepareStatement(sqlQuery);
+			ps.setFloat(1, amount);
+			ps.setInt(2, userId);
+			ps.execute();
+		
+		//改变订单状态
+		//订单状态（1未付款，2已付款未发货，3已付款已发货、4已收货）
+		sqlQuery = "Update order_table set status = 2 ,orderTime=cast(? as datetime) where orderId = ?";	
+		ps = conn.prepareStatement(sqlQuery);
+		
+			//获取当前时间
+			java.util.Date utilDate = new java.util.Date();
+			Date time = new Date(utilDate.getTime());
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			String dateString = formatter.format(time);
+			System.out.println("dataString-----======"+dateString);
 			
-			OrderItem orderItem = orderItemList.get(i);
-			
-			orderItem.toString();
-			
-			ps.setInt(1, order.getUserId());
-			ps.setInt(2, orderItem.getProductId());
-			
-			ps.executeUpdate();
-		}
+		ps.setString(1, dateString);
+		ps.setInt(2, orderId);
+		ps.execute();
+		
 		
 		//获得订单信息
 		sqlQuery = "SELECT * from show_order where orderId = ?";
@@ -106,7 +99,7 @@ public class CommitOrderDao {
 				
 				showOrder.setProductInfo(productInfo);
 				//买家信息
-				 int userId = rs.getInt("userId");							//用户编号
+				 int userId__ = rs.getInt("userId");							//用户编号
 				 String name = rs.getString("name");						//收件人姓名
 				 String province = rs.getString("province");				//省份
 				 String city = rs.getString("city");						//城市
@@ -119,10 +112,10 @@ public class CommitOrderDao {
 				 String createTime = rs.getString("createTime");			//创建时间
 				 String message = rs.getString("message");					//
 				 int status = rs.getInt("status");							//订单状态
-				 float amount = rs.getFloat("amount");						//总价
+				 float amount_ = rs.getFloat("amount");						//总价
 				 String storeName = rs.getString("storeName");				//店铺名称
 			
-				 showOrder.setUserId(userId);
+				 showOrder.setUserId(userId__);
 				 showOrder.setName(name);
 				 showOrder.setProvince(province);
 				 showOrder.setCity(city);
@@ -133,7 +126,7 @@ public class CommitOrderDao {
 				 showOrder.setCreateTime(createTime);
 				 showOrder.setMessage(message);
 				 showOrder.setStatus(String.valueOf(status));
-				 showOrder.setAmount(amount);
+				 showOrder.setAmount(amount_);
 				 showOrder.setStoreName(storeName);
 			}
 			OrderProductInfo orderProductInfo = new OrderProductInfo();
@@ -159,8 +152,9 @@ public class CommitOrderDao {
 			 
 		}
 		
-	
+		System.out.println("payOrderDao-----showOrder:"+showOrder);
 		return showOrder;
+		
 	}
 	
 	

@@ -12,7 +12,15 @@ import javax.servlet.http.HttpServletResponse;
 import cn.edu.zhku.phonehub.order.model.ShowPreviewOrder;
 import cn.edu.zhku.phonehub.order.model.ShowPreviewOrderEntity;
 import cn.edu.zhku.phonehub.order.service.ShowOrderService;
-
+/*
+ * 类名：ShowOrderCtrl
+ * 功能：用户在购物车中点击结算，跳转到该Service,
+ * 		主要从数据库中获取预览的订单数据
+ * 输入：
+ * 		界面获取：商品id，
+ * 输出：订单预览数据
+ * 作者：feven
+ */
 public class ShowOrderCtrl extends HttpServlet {
 
 

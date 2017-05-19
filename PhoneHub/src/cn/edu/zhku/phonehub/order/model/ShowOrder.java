@@ -6,29 +6,61 @@ public class ShowOrder {
 
 	ArrayList<OrderProductInfo> productInfo = null;
 	
-	//买家地址信息
+	
+	//买家信息
+	private int userId;				//买家编号
+	private String name;			//收件人名字
 	private String province;		//省份
 	private String city;			//城市
 	private String detailAddress;	//详细地址
 	private String phone;			//电话
 	
 	//订单信息
-	private String orderTime;		//下单时间
+	private int orderId;			//订单编号
+	private String orderTime;		//支付时间
 	private String createTime;		//创建时间
 	private String message;			//
 	private String status;			//订单状态
 	private float amount;			//总价
 	private String storeName;		//店铺名称
 	
-	
+
+
 	@Override
 	public String toString() {
-		return "ShowOrder [productInfo=" + productInfo + ", province="
-				+ province + ", city=" + city + ", detailAddress="
-				+ detailAddress + ", phone=" + phone + ", orderTime="
-				+ orderTime + ", createTime=" + createTime + ", message="
-				+ message + ", status=" + status + ", amount=" + amount
-				+ ", storeName=" + storeName + "]";
+		return "ShowOrder [productInfo=" + productInfo + ", userId=" + userId
+				+ ", name=" + name + ", province=" + province + ", city="
+				+ city + ", detailAddress=" + detailAddress + ", phone="
+				+ phone + ", orderId=" + orderId + ", orderTime=" + orderTime
+				+ ", createTime=" + createTime + ", message=" + message
+				+ ", status=" + status + ", amount=" + amount + ", storeName="
+				+ storeName + "]";
+	}
+
+
+	public int getOrderId() {
+		return orderId;
+	}
+	
+	
+	public int getUserId() {
+		return userId;
+	}
+
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
+
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public void setOrderId(int orderId) {
+		this.orderId = orderId;
 	}
 	public ShowOrder() {
 		super();
