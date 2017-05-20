@@ -13,7 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'PayResult.jsp' starting page</title>
+    <title>My JSP 'ShowStoreSeeOrder.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -26,22 +26,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
   </head>
   
-  <body>
   <%
-  		ShowOrder showOrder = (ShowOrder)request.getAttribute("showOrder");
-  	 	out.write("订单完成----showOrder="+showOrder.toString());
-  	 	
-  	 	int orderId = showOrder.getOrderId();
-  	 	request.getSession().setAttribute("orderId",orderId);
-  	 	
+  		ArrayList<StoreSeeOrder> storeSeeOrderList = (ArrayList<StoreSeeOrder>)request.getAttribute("storeSeeOrderList");
+  	 	if(storeSeeOrderList != null){
+  	 		out.write(storeSeeOrderList.toString());
+  	 	}
+  
+  
    %>
-   <br>
-   <form action="./servlet/GetProductCtrl">
-   
-   	<input type="submit" value="收货">
-   
-   </form>
   
-  
+  <body>
+    This is my JSP page. <br>
   </body>
 </html>

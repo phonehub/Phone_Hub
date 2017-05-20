@@ -1,7 +1,9 @@
+<%@page import="cn.edu.zhku.phonehub.order.dao.StoreSeeOrderDao"%>
 <%@ page language="java" 
 import="java.util.*" 
 import="cn.edu.zhku.phonehub.order.model.*"
 import="java.util.ArrayList"
+
 pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
@@ -13,7 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'PayResult.jsp' starting page</title>
+    <title>My JSP 'StoreSeeOrder.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -25,23 +27,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
 
   </head>
-  
-  <body>
   <%
-  		ShowOrder showOrder = (ShowOrder)request.getAttribute("showOrder");
-  	 	out.write("订单完成----showOrder="+showOrder.toString());
   	 	
-  	 	int orderId = showOrder.getOrderId();
-  	 	request.getSession().setAttribute("orderId",orderId);
-  	 	
-   %>
-   <br>
-   <form action="./servlet/GetProductCtrl">
-   
-   	<input type="submit" value="收货">
-   
-   </form>
-  
-  
+  	 	//ArrayList<StoreSeeOrderDao> storeSeeOrderList = (ArrayList<StoreSeeOrderDao>)request.getAttribute("storeSeeOrderList");
+  	 	//if(storeSeeOrderList != null){
+  	 	//	out.write(storeSeeOrderList.toString());
+  	 	//}
+  	 	request.getSession().setAttribute("storeSeeOrder_select",10);
+  	 	request.getSession().setAttribute("storeSeeOrder_orderId",28);
+  	 	request.getSession().setAttribute("storeSeeOrder_userId",3);
+  	 	request.getSession().setAttribute("storeSeeOrder_orderTime","05-17");
+  	 %>
+  <body>
+    <form action="./servlet/StoreSeeOrderCtrl">
+    	<input type="submit" value = "查找">
+    </form>
+    
+    
   </body>
 </html>

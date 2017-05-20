@@ -1,8 +1,4 @@
-<%@ page language="java" 
-import="java.util.*" 
-import="cn.edu.zhku.phonehub.order.model.*"
-import="java.util.ArrayList"
-pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -13,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'PayResult.jsp' starting page</title>
+    <title>My JSP 'SendProduct.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -26,22 +22,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
   </head>
   
+  	<%
+  		request.getSession().setAttribute("sendOrder_orderId",25);
+  		
+  	 %>
+  
+  
   <body>
-  <%
-  		ShowOrder showOrder = (ShowOrder)request.getAttribute("showOrder");
-  	 	out.write("订单完成----showOrder="+showOrder.toString());
-  	 	
-  	 	int orderId = showOrder.getOrderId();
-  	 	request.getSession().setAttribute("orderId",orderId);
-  	 	
-   %>
-   <br>
-   <form action="./servlet/GetProductCtrl">
-   
-   	<input type="submit" value="收货">
-   
-   </form>
-  
-  
+    
+    <form action="./servlet/SendOrderCtrl">
+    	<input type="submit" value="发货">
+    
+    </form>
+    
+    
   </body>
 </html>
