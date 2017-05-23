@@ -166,7 +166,7 @@ public class StoreSeeOrderDao {
 			 order.setDetailAddress(detailAddress);
 			 order.setPhone(phone);
 			 order.setCost(cost);
-			 order.setName(storeName);
+			 order.setName(name);
 			 order.setUserId(userId);
 			 order.setStoreName(storeName);
 			 order.setLocation(location);

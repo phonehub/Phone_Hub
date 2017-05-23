@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cn.edu.zhku.phonehub.order.model.ShowPreviewOrder;
-import cn.edu.zhku.phonehub.order.model.ShowPreviewOrderEntity;
+import cn.edu.zhku.phonehub.order.model.entity.ShowPreviewOrderEntity;
 import cn.edu.zhku.phonehub.order.service.ShowOrderService;
 /*
  * 类名：ShowOrderCtrl

@@ -1,6 +1,9 @@
-package cn.edu.zhku.phonehub.order.model;
+package cn.edu.zhku.phonehub.order.model.entity;
 
 import java.util.ArrayList;
+
+import cn.edu.zhku.phonehub.order.model.Order;
+import cn.edu.zhku.phonehub.order.model.OrderItem;
 
 public class OrderOrderItemEntity {
 

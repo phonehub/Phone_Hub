@@ -38,10 +38,6 @@ public class StoreSeeOrder {
 	//卖家信息
 	private String storeName;	//店铺名称
 	private String location;	//店家地址
-	
-	
-	
-
 
 	@Override
 	public String toString() {

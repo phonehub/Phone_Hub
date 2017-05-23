@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import cn.edu.zhku.phonehub.order.dao.StoreSeeOrderDao;
 import cn.edu.zhku.phonehub.order.model.StoreSeeOrder;
-import cn.edu.zhku.phonehub.order.model.StoreSeeOrderEntity;
+import cn.edu.zhku.phonehub.order.model.entity.StoreSeeOrderEntity;
 
 public class StoreSeeOrderService {
 

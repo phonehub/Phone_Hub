@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import cn.edu.zhku.phonehub.order.dao.CommitOrderDao;
 import cn.edu.zhku.phonehub.order.model.Order;
 import cn.edu.zhku.phonehub.order.model.OrderItem;
-import cn.edu.zhku.phonehub.order.model.OrderOrderItemEntity;
 import cn.edu.zhku.phonehub.order.model.ShowOrder;
 import cn.edu.zhku.phonehub.order.model.ShowPreviewOrder;
+import cn.edu.zhku.phonehub.order.model.entity.OrderOrderItemEntity;
 
 public class CommitOrderService {
 

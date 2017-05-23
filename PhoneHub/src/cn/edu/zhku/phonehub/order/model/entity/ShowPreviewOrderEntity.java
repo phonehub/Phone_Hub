@@ -1,4 +1,4 @@
-package cn.edu.zhku.phonehub.order.model;
+package cn.edu.zhku.phonehub.order.model.entity;
 
 
 public class ShowPreviewOrderEntity {

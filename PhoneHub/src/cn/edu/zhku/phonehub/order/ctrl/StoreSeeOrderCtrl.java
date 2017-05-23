@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cn.edu.zhku.phonehub.order.model.StoreSeeOrder;
-import cn.edu.zhku.phonehub.order.model.StoreSeeOrderEntity;
+import cn.edu.zhku.phonehub.order.model.entity.StoreSeeOrderEntity;
 import cn.edu.zhku.phonehub.order.service.StoreSeeOrderService;
 /*
  * 类名：StoreSeeOrderCtrl

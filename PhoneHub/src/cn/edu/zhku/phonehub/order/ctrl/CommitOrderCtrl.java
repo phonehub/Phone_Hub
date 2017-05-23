@@ -15,7 +15,6 @@ import cn.edu.zhku.phonehub.order.model.ShowOrder;
 import cn.edu.zhku.phonehub.order.model.ShowPreviewOrder;
 import cn.edu.zhku.phonehub.order.service.CommitOrderService;
 
-@SuppressWarnings("serial")
 public class CommitOrderCtrl extends HttpServlet {
 
 
