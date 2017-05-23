@@ -73,7 +73,59 @@
     <servlet-name>ModifyOrderCtrl</servlet-name>
     <servlet-class>cn.edu.zhku.phonehub.order.ctrl.ModifyOrderCtrl</servlet-class>
   </servlet>
+ <!--yang hang-->
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>AlterCountCtrl</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.store.ctrl.AlterCountCtrl</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>DeleteProductCtrl</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.store.ctrl.DeleteProductCtrl</servlet-class>
+  </servlet>
+   <servlet>
+    <servlet-name>login</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.user.ctrl.LoginCtrl</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>Register</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.user.ctrl.RegisterCtrl</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DelCart</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.cart.ctrl.DelCart</servlet-class>
+=======
+    <servlet-name>PayOrderCtrl</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.order.ctrl.PayOrderCtrl</servlet-class>
+>>>>>>> branch 'master' of ssh://git@github.com/phonehub/Phone_Hub.git
+  </servlet>
 
+  <servlet>
+    <servlet-name>addtocart</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.cart.ctrl.AddToCart</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DeCart</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.cart.ctrl.DecreaseCart</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>PlusCart</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.cart.ctrl.PlusCart</servlet-class>
+  </servlet>
+  <servlet>
+  <servlet-name>ModifyCtrl</servlet-name>
+  <servlet-class>cn.edu.zhku.phonehub.user.services.UserModify</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>AlterBusinessStatus</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.store.ctrl.AlterBusinessStatus</servlet-class>
+  </servlet>
+<!-- yang hang -->
 
  <servlet-mapping>
   <servlet-name>ShowProductDetailCtrl</servlet-name>
