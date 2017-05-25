@@ -11,8 +11,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-  <head>
-    <base href="<%=basePath%>">
+  <head> 
+    <base href="<%=basePath%>"> 
     
     <title>订单预览界面</title>
     
@@ -21,7 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
+	<!-- 
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 
@@ -66,7 +66,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<th>单价</th>
 				<th>数量</th>
 				<th>小计</th>
-				<th>操作</th>
+				<th>操作</th> 
 			</tr>
 			
 		<%

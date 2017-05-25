@@ -1,5 +1,6 @@
 package cn.edu.zhku.phonehub.store.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import cn.edu.zhku.phonehub.store.util.DBUtil;
@@ -66,6 +67,51 @@ public class ProductDao {
 			return true;
 		else
 			return false;
+	}
+	
+	/**
+	 * 修改商品库存数
+	 * @param map
+	 * @return
+	 */
+	public boolean alterNum(Map<String,Integer> map){
+		String sql = "update product_table set num=? where productId = ?";
+		Object[] params = {
+				map.get("num"),
+				map.get("num")
+		};
+		int i = dbUtil.update(sql, params);
+		if(i==1)
+			return true;
+		else
+			return false;
+	}
+	
+	public boolean dropProduct(Map map){
+		String sql = "update product_table set status = 1 where productId = ?";
+		Object[] params = {
+				map.get("productId")
+		};
+		int i = dbUtil.update(sql, params);
+		if(i==1)
+			return true;
+		else
+			return false;
+		
+	}
+	
+	/**
+	 * 查询店铺所有商品
+	 * @param map
+	 * @return
+	 */
+	public List getProductList(Map map){
+		String sql = "select * from product_table where storeId = ?";
+		Object[] params={
+			map.get("storeId")
+		};
+		List ls = dbUtil.getList(sql, params);
+		return ls;
 	}
 	
 

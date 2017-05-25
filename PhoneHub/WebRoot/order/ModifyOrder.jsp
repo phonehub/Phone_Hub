@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'ModifyOrder.jsp' starting page</title>
+    <title>My JSP 'ModifyOrder.jsp' starting page</title> 
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -25,7 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	request.getSession().setAttribute("modify_orderId",21);
   	request.getSession().setAttribute("modify_province","广东省");
   	//request.getSession().setAttribute("modify_city","东莞市";
-  	request.getSession().setAttribute("modify_detailAddress","梅花院21号"); 
+  	request.getSession().setAttribute("modify_detailAddress","梅花院21号");  
   	request.getSession().setAttribute("modify_phone","15820359482");
   	request.getSession().setAttribute("modify_name","少侠");
   	request.getSession().setAttribute("modify_amount","9999");

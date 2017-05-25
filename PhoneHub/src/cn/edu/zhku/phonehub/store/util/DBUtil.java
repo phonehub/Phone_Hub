@@ -70,8 +70,31 @@ public class DBUtil{
 		}
 	}
 	
-	
 	public List getList(String sql,String[] params){
+		List list = new ArrayList();
+		try{
+			this.setParams(sql, params);
+			ResultSet rs = pstmt.executeQuery();
+			ResultSetMetaData rsmd = rs.getMetaData();
+			while(rs.next()){
+				Map m = new HashMap();
+				for(int i=1;i<=rsmd.getColumnCount();i++){
+					String colName = rsmd.getColumnName(i);
+					m.put(colName, rs.getString(colName));
+				}
+				list.add(m);
+			}
+		}catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			close();
+		}
+		return list;
+	}
+	
+	//函数重载
+	public List getList(String sql,Object[] params){
 		List list = new ArrayList();
 		try{
 			this.setParams(sql, params);

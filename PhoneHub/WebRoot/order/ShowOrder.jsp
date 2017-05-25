@@ -95,14 +95,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<td><%=showOrder.getDetailAddress() %></td>
 			</tr> 
 	</table >
-	<br>
+	<br> 
     <br>
    	<table border="1" align="center">
    		<tr>
    			<td colspan="8"><p align="left">店铺：<%=showOrder.getStoreName() %></p></td>
    		</tr>
    	
-   		<tr>
+   		<tr> 
 			<td>图片</td>
 			<td>商品名称</td>
 			<td>颜色</td>
