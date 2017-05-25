@@ -25,6 +25,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	<script type="text/javascript">
+	
+	//用ajax获取
+	function getOrderInfo(){
+		$.ajax({
+			type:"get", //请求方式
+			url:""
+		
+		})
+	
+	}
+
+	</script>
+
 
   </head>
   <%
@@ -39,6 +53,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	 	request.getSession().setAttribute("storeSeeOrder_orderTime","05-17");
   	 %>
   <body>
+  
+  	<table border="1" align="center">
+  		<tr>
+  			<td >订单信息</td>
+  		</tr>
+  	</table>
+  	
+  	<table border="1" align="center" width="80%">
+  		<tr>
+  			<td><a href="">订单编号升序</a></td>
+  			<td><a href="">订单编号降序</a></td>
+  			<td><a href="">未付款</a></td>
+  			<td><a href="">已付款</a></td>
+  			<td><a href="">未发货</a></td>
+  			<td><a href="">已发货</a></td>
+  		</tr>
+  	</table>
+  	<table border="1" align="center">
+ 	 	<tr>
+  			<th>
+  				<select size="1" name="storeSeeOrder_select">
+  					<option value="orderId">订单编号</option>
+  					<option value="orderTime">支付时间</option>
+  					<option value="userId">用户编号</option>
+  				</select>
+  			
+  				<input type="text" name="storeSeeOrder_orderId">
+  				<input type="submit" value="查找">
+  				
+  				</th>
+  		</tr>
+  	
+  	</table>
+  	
+  
+  
     <form action="./servlet/StoreSeeOrderCtrl">
     	<input type="submit" value = "查找">
     </form>

@@ -4,19 +4,17 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-import javax.jms.Session;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import cn.edu.zhku.phonehub.order.model.ShowOrder;
-import cn.edu.zhku.phonehub.order.model.ShowPreviewOrder;
-import cn.edu.zhku.phonehub.order.service.CommitOrderService;
+import cn.edu.zhku.phonehub.order.model.ShopCart;
+import cn.edu.zhku.phonehub.order.service.ShowShopcartService;
 
-public class CommitOrderCtrl extends HttpServlet {
-
+//让培鑫写吧~
+public class ShowShopcartCtrl extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -25,28 +23,24 @@ public class CommitOrderCtrl extends HttpServlet {
 		//设定输出编码格式
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html");
-
-		//获得预览的订单信息
-		ArrayList<ShowPreviewOrder> previewOrder = null;
-		//previewOrder =(ArrayList<ShowPreviewOrder>) request.getAttribute("previewOrder");
-		previewOrder = (ArrayList<ShowPreviewOrder>) request.getSession().getAttribute("previewOrder");
-		System.out.println("CommitOrderCtrl------previewOrder="+previewOrder);
+		//获得用户名字
+		int userId = (Integer) request.getSession().getAttribute("userId");
+		System.out.println("ctrl-----userId="+userId);
 		
 		
-		//获得确认后的订单信息
-		ShowOrder showOrder = null;
+		ArrayList<ShopCart> shopcartList = null;
+		
 		try {
-			showOrder = CommitOrderService.getCommitOrder(previewOrder);
+			shopcartList = ShowShopcartService.getShopcart(userId);
 			
-			System.out.println("CommitOrderCtrl-------showOrder.getProductInfo="+showOrder.getProductInfo());
-			
+			System.out.println("ShowShopcartCtrl-------shopcartList="+shopcartList);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally{
 			RequestDispatcher rd = null;
-			request.setAttribute("showOrder", showOrder);
-			rd = request.getRequestDispatcher("/order/ShowOrder.jsp");	//显示订单预览界面
+			request.setAttribute("shopcartList", shopcartList);
+			rd = request.getRequestDispatcher("/order/shopcartCommit.jsp");	//显示订单预览界面
 			rd.forward(request, response);
 		}
 		
@@ -56,7 +50,7 @@ public class CommitOrderCtrl extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		this.doGet(request, response);
-
+		
 	}
 
 }

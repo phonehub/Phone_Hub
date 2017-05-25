@@ -2,9 +2,7 @@ package cn.edu.zhku.phonehub.order.ctrl;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 
-import javax.jms.Session;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,11 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cn.edu.zhku.phonehub.order.model.ShowOrder;
-import cn.edu.zhku.phonehub.order.model.ShowPreviewOrder;
-import cn.edu.zhku.phonehub.order.service.CommitOrderService;
+import cn.edu.zhku.phonehub.order.service.ConsumerSeeOrderService;
 
-public class CommitOrderCtrl extends HttpServlet {
-
+public class ConsumerSeeOrderCtrl extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -25,37 +21,29 @@ public class CommitOrderCtrl extends HttpServlet {
 		//设定输出编码格式
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html");
-
-		//获得预览的订单信息
-		ArrayList<ShowPreviewOrder> previewOrder = null;
-		//previewOrder =(ArrayList<ShowPreviewOrder>) request.getAttribute("previewOrder");
-		previewOrder = (ArrayList<ShowPreviewOrder>) request.getSession().getAttribute("previewOrder");
-		System.out.println("CommitOrderCtrl------previewOrder="+previewOrder);
 		
+		int userId = (Integer) request.getSession().getAttribute("userId");
+		System.out.println("consumerSeeOrderCtrl------userId="+userId);
 		
-		//获得确认后的订单信息
 		ShowOrder showOrder = null;
 		try {
-			showOrder = CommitOrderService.getCommitOrder(previewOrder);
-			
-			System.out.println("CommitOrderCtrl-------showOrder.getProductInfo="+showOrder.getProductInfo());
-			
+			showOrder = ConsumerSeeOrderService.getFinalOrder(userId);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally{
 			RequestDispatcher rd = null;
 			request.setAttribute("showOrder", showOrder);
-			rd = request.getRequestDispatcher("/order/ShowOrder.jsp");	//显示订单预览界面
+			rd = request.getRequestDispatcher("/order/consumerSeeOrder.jsp");	//显示付款完成页面
 			rd.forward(request, response);
 		}
 		
 		
+		
 	}
-
+	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		this.doGet(request, response);
 
 	}
 

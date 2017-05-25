@@ -5,23 +5,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import cn.edu.zhku.phonehub.order.model.Order;
-import cn.edu.zhku.phonehub.order.model.OrderItem;
 import cn.edu.zhku.phonehub.order.model.OrderProductInfo;
 import cn.edu.zhku.phonehub.order.model.ShowOrder;
-import cn.edu.zhku.phonehub.order.model.entity.OrderOrderItemEntity;
 import cn.edu.zhku.phonehub.product.util.ConnectionManager;
 
-public class CommitOrderDao {
+public class ConsumerSeeOrderDao {
 
-	public ShowOrder getCommitOrderFromDb(OrderOrderItemEntity entity) throws Exception{
-		
+	public ShowOrder getOrderFromDb(int userId) throws Exception{
 		ShowOrder showOrder = null;
-		
-		//解封
-		Order order = entity.getOrder();
-		ArrayList<OrderItem> orderItemList = entity.getOrderItemList();
-		
 		
 		//连接数据库
 		Connection conn = null;
@@ -34,76 +25,14 @@ public class CommitOrderDao {
 			throw new Exception("数据库连接不成功");
 		}
 		
-		//插入Order_table
 		String sqlQuery = null;
-		sqlQuery = "Insert into order_table(userId,amount,message,status,province,city,detailAddress,phone,name) values(?,?,?,?,?,?,?,?,?)";
+		sqlQuery = "Select * from show_order where userId=? ORDER BY createTime DESC";
 		ps = conn.prepareStatement(sqlQuery);
-		ps.setInt(1, order.getUserId());
-		ps.setFloat(2, order.getAmount());
-		ps.setString(3, order.getMessage());
-		ps.setInt(4, order.getStatus());
-		
-		ps.setString(5, entity.getProvince());
-		ps.setString(6, entity.getCity());
-		ps.setString(7, entity.getDetailAddress());
-		ps.setString(8, entity.getPhone());
-		ps.setString(9, entity.getName());
-		
-		ps.executeUpdate();
-		
-		//获得orderId
-		sqlQuery = "SELECT MAX(orderId) FROM order_table";
-		ps = conn.prepareStatement(sqlQuery);
-		rs = ps.executeQuery();
-		rs.next();
-		int orderId = rs.getInt(1);
-		System.out.println("rs--------"+rs.getInt(1));
-		
-		
-		//插入order_item_table  并且减少product_table的数量
-		String reduceNumSqlQuery = "Update product_table set num=num-? where productId = ?";
-		sqlQuery ="Insert into order_item_table(orderId,productId,num,cost) values(?,?,?,?)";
-		for(int i=0;i<orderItemList.size();i++){
-			
-			ps = conn.prepareStatement(sqlQuery);
-			OrderItem orderItem = orderItemList.get(i);		//获得item
-			orderItem.toString();							//测试输出
-			ps.setInt(1, orderId);
-			ps.setInt(2, orderItem.getProductId());
-			ps.setInt(3, orderItem.getNum());
-			ps.setFloat(4, orderItem.getCost());
-			ps.executeUpdate();
-			
-			ps = conn.prepareStatement(reduceNumSqlQuery);
-			ps.setInt(1, orderItem.getNum());
-			ps.setInt(2, orderItem.getProductId());
-			ps.executeUpdate();
-		}
-		
-		//删除shopcart_table中对应商品
-		for(int i=0;i<orderItemList.size();i++){
-			sqlQuery ="Delete from shopcart_table where userId = ? and productId =?";
-			ps = conn.prepareStatement(sqlQuery);
-			
-			OrderItem orderItem = orderItemList.get(i);
-			
-			orderItem.toString();
-			
-			ps.setInt(1, order.getUserId());
-			ps.setInt(2, orderItem.getProductId());
-			
-			ps.executeUpdate();
-		}
-		
-		//获得订单信息
-		sqlQuery = "SELECT * from show_order where orderId = ?";
-		ps = conn.prepareStatement(sqlQuery);
-		ps.setInt(1, orderId);
+		ps.setInt(1, userId);
 		rs = ps.executeQuery();
 		
 		ArrayList<OrderProductInfo> productInfo = null;
 		while(rs.next()){
-			
 			if(showOrder==null){
 				showOrder = new ShowOrder();
 				
@@ -113,7 +42,7 @@ public class CommitOrderDao {
 				
 				showOrder.setProductInfo(productInfo);
 				//买家信息
-				 int userId = rs.getInt("userId");							//用户编号
+				 int userId__ = rs.getInt("userId");						//用户编号
 				 String name = rs.getString("name");						//收件人姓名
 				 String province = rs.getString("province");				//省份
 				 String city = rs.getString("city");						//城市
@@ -124,12 +53,14 @@ public class CommitOrderDao {
 				 int orderId_ = rs.getInt("orderId");						//订单编号
 				 String orderTime = rs.getString("orderTime");				//下单时间
 				 String createTime = rs.getString("createTime");			//创建时间
+				 String sendTime = rs.getString("sendTime"); 				//发货时间  //
+				 String getTime = rs.getString("getTime");					//收货时间  //
 				 String message = rs.getString("message");					//
 				 int status = rs.getInt("status");							//订单状态
-				 float amount = rs.getFloat("amount");						//总价
+				 float amount_ = rs.getFloat("amount");						//总价
 				 String storeName = rs.getString("storeName");				//店铺名称
 			
-				 showOrder.setUserId(userId);
+				 showOrder.setUserId(userId__);
 				 showOrder.setName(name);
 				 showOrder.setProvince(province);
 				 showOrder.setCity(city);
@@ -138,9 +69,11 @@ public class CommitOrderDao {
 				 showOrder.setOrderId(orderId_);
 				 showOrder.setOrderTime(orderTime);
 				 showOrder.setCreateTime(createTime);
+				 showOrder.setSendTime(sendTime);
+				 showOrder.setGetTime(getTime);
 				 showOrder.setMessage(message);
 				 showOrder.setStatus(String.valueOf(status));
-				 showOrder.setAmount(amount);
+				 showOrder.setAmount(amount_);
 				 showOrder.setStoreName(storeName);
 			}
 			OrderProductInfo orderProductInfo = new OrderProductInfo();
@@ -163,12 +96,9 @@ public class CommitOrderDao {
 			 orderProductInfo.setRam(ram);
 			 
 			 productInfo.add(orderProductInfo);
-			 
 		}
 		
-	
 		return showOrder;
 	}
-	
 	
 }
