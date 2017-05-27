@@ -12,13 +12,14 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import cn.edu.zhku.phonehub.store.dao.ProductDao;
 import cn.edu.zhku.phonehub.store.util.FileUtil;
 
 public class AddProductServer {
 	
-	public void addProduct(HttpServletRequest request){
+	public boolean addProduct(HttpServletRequest request){
 		
-		// 商品图片的临时存放路径
+		// 商品图片的临时存放路径--
 		String tempPath = request.getSession().getServletContext().getRealPath("\\")+"Image\\temp\\";
 		
 		File tmpFile = new File(tempPath);
@@ -27,19 +28,8 @@ public class AddProductServer {
 		}
 		
 		try{
-			// 获得磁盘文件条目工厂
-			DiskFileItemFactory factory = new DiskFileItemFactory();
-			// 缓冲区大小为100k
-			factory.setSizeThreshold(1024 * 100);
-			// 设置临时存放路径
-			factory.setRepository(tmpFile);
 			
-			ServletFileUpload upload = new ServletFileUpload(factory);
-			
-			upload.setHeaderEncoding("utf-8");
-			
-			// 设置上传单个文件的最大值为4M
-			upload.setFileSizeMax(4096 * 1024);
+			ServletFileUpload upload = FileUtil.createUpload(tmpFile, 4096 * 1024);
 			
 			//存储普通表单字段名及字段值
 			Map<String,String> map = new HashMap<String,String>();
@@ -79,13 +69,19 @@ public class AddProductServer {
 			
 			map.put("storeId",(String)request.getSession().getAttribute("storeId"));
 			//测试-----打印map
-			Iterator iter = map.entrySet().iterator();
-			while (iter.hasNext()) {
-				Map.Entry entry = (Map.Entry) iter.next();
-				System.out.println((String)entry.getKey()+":"+entry.getValue());
-			}
+//			Iterator iter = map.entrySet().iterator();
+//			while (iter.hasNext()) {
+//				Map.Entry entry = (Map.Entry) iter.next();
+//				System.out.println((String)entry.getKey()+":"+entry.getValue());
+//			}
+			ProductDao pd = new ProductDao();
+			if(pd.insertProduct(map))
+				return true;
+			else
+				return false;
 		}catch(Exception e){
 			e.printStackTrace();
+			return false;
 		}
 	}
 	
@@ -93,9 +89,9 @@ public class AddProductServer {
 	/**
 	 * @param args
 	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
+//	public static void main(String[] args) {
+//		// TODO Auto-generated method stub
+//
+//	}
 
 }

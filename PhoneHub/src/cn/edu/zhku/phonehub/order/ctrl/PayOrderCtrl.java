@@ -48,6 +48,8 @@ public class PayOrderCtrl extends HttpServlet {
 			request.setAttribute("showOrder", showOrder);
 			rd = request.getRequestDispatcher("/order/PayResult.jsp");	//显示付款完成页面
 			rd.forward(request, response);
+			
+			
 		}
 		
 		

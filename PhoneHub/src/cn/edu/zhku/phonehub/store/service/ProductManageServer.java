@@ -36,7 +36,7 @@ public class ProductManageServer {
 	public boolean deleteProduct(Product product){
 		Map<String,Integer> map = new HashMap<String,Integer>();
 		map.put("productId", product.getProductId());
-		if(pd.dropProduct(map))
+		if(pd.deleteProduct(map))
 			return true;
 		else
 			return false;

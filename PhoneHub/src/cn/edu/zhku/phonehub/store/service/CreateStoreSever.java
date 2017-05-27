@@ -29,7 +29,7 @@ import cn.edu.zhku.phonehub.store.util.FileUtil;
 public class CreateStoreSever {
 	
 	
-	public void createStore(HttpServletRequest request){
+	public boolean createStore(HttpServletRequest request){
 		// 文件临时存放路径
 		String tempPath = request.getSession().getServletContext().getRealPath("\\")+"Image\\temp\\";
 		//测试---打印temp绝对路径
@@ -41,19 +41,7 @@ public class CreateStoreSever {
 		}
 		
 		try{
-			// 获得磁盘文件条目工厂
-			DiskFileItemFactory factory = new DiskFileItemFactory();
-			// 缓冲区大小为100k
-			factory.setSizeThreshold(1024 * 100);
-			// 设置临时存放路径
-			factory.setRepository(tmpFile);
-			
-			ServletFileUpload upload = new ServletFileUpload(factory);
-			
-			upload.setHeaderEncoding("utf-8");
-			
-			// 设置上传单个文件的最大值为4M
-			upload.setFileSizeMax(4096 * 1024);
+			ServletFileUpload upload = FileUtil.createUpload(tmpFile, 4096 * 1024);
 			
 			//存储普通表单字段名及字段值
 			Map<String,String> map = new HashMap<String,String>();
@@ -101,10 +89,14 @@ public class CreateStoreSever {
 			}
 			
 			StoreDao storeDao = new StoreDao();
-			storeDao.insertStore(map);
+			if(storeDao.insertStore(map))
+				return true;
+			else
+				return false;
 			
 		}catch(Exception e){
 			e.printStackTrace();
+			return false;
 		}
 	}
 	

@@ -70,6 +70,7 @@ public class DBUtil{
 		}
 	}
 	
+	
 	public List getList(String sql,String[] params){
 		List list = new ArrayList();
 		try{
@@ -93,7 +94,6 @@ public class DBUtil{
 		return list;
 	}
 	
-	//函数重载
 	public List getList(String sql,Object[] params){
 		List list = new ArrayList();
 		try{
@@ -116,6 +116,7 @@ public class DBUtil{
 		}
 		return list;
 	}
+	
 	
 	public Map getMap(String sql,String[] params){
 		List list = getList(sql,params);

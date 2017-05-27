@@ -15,6 +15,7 @@ import cn.edu.zhku.phonehub.order.model.ShowOrder;
 import cn.edu.zhku.phonehub.order.model.ShowPreviewOrder;
 import cn.edu.zhku.phonehub.order.service.CommitOrderService;
 
+@SuppressWarnings("serial")
 public class CommitOrderCtrl extends HttpServlet {
 
 
@@ -26,6 +27,7 @@ public class CommitOrderCtrl extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html");
 
+		
 		//获得预览的订单信息
 		ArrayList<ShowPreviewOrder> previewOrder = null;
 		//previewOrder =(ArrayList<ShowPreviewOrder>) request.getAttribute("previewOrder");
@@ -48,6 +50,8 @@ public class CommitOrderCtrl extends HttpServlet {
 			request.setAttribute("showOrder", showOrder);
 			rd = request.getRequestDispatcher("/order/ShowOrder.jsp");	//显示订单预览界面
 			rd.forward(request, response);
+			
+			
 		}
 		
 		

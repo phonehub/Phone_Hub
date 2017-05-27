@@ -1,18 +1,21 @@
 package cn.edu.zhku.phonehub.store.util;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.UUID;
 
 import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 public class FileUtil {
 	
 	/**
 	 * 对上传文件进行重命名
 	 * @return String
-	 * 返回重命名后的文件名
+	 * 返回重命名后的文件名,.jpg格式
 	 */
 	public  static String  makeFileName() {
 		long uuid = UUID.randomUUID().toString().hashCode();
@@ -24,8 +27,8 @@ public class FileUtil {
 	
 	/**
 	 * 保存文件
-	 * @param item
-	 * @param savePath
+	 * @param item FileItem
+	 * @param savePath String
 	 * @return String
 	 * 返回保存文件的绝对路径
 	 */
@@ -55,13 +58,14 @@ public class FileUtil {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		item.delete();
 		return path;
 	}
 	
 	/**
 	 * 提取相对路径
-	 * @param savePath
-	 * @return relativePath
+	 * @param savePath String 绝对路径 
+	 * @return relativePath String 相对路径
 	 */
 	public static String getRelativePath(String savePath){
 		
@@ -81,6 +85,23 @@ public class FileUtil {
 		//测试---打印相对路径
 		//System.out.println(relativePath);
 		return relativePath;
+	}
+	
+	public static ServletFileUpload createUpload(File tempFile,int max_file_size){
+		// 获得磁盘文件条目工厂
+		DiskFileItemFactory factory = new DiskFileItemFactory();
+		// 缓冲区大小为100k
+		factory.setSizeThreshold(1024 * 100);
+		// 设置临时存放路径
+		factory.setRepository(tempFile);
+		
+		ServletFileUpload upload = new ServletFileUpload(factory);
+		
+		upload.setHeaderEncoding("utf-8");
+		
+		upload.setFileSizeMax(max_file_size);
+		
+		return upload;
 	}
 
 }

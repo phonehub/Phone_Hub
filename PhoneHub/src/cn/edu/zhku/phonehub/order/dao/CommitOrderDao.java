@@ -7,9 +7,9 @@ import java.util.ArrayList;
 
 import cn.edu.zhku.phonehub.order.model.Order;
 import cn.edu.zhku.phonehub.order.model.OrderItem;
+import cn.edu.zhku.phonehub.order.model.OrderOrderItemEntity;
 import cn.edu.zhku.phonehub.order.model.OrderProductInfo;
 import cn.edu.zhku.phonehub.order.model.ShowOrder;
-import cn.edu.zhku.phonehub.order.model.entity.OrderOrderItemEntity;
 import cn.edu.zhku.phonehub.product.util.ConnectionManager;
 
 public class CommitOrderDao {
@@ -36,19 +36,12 @@ public class CommitOrderDao {
 		
 		//插入Order_table
 		String sqlQuery = null;
-		sqlQuery = "Insert into order_table(userId,amount,message,status,province,city,detailAddress,phone,name) values(?,?,?,?,?,?,?,?,?)";
+		sqlQuery = "Insert into order_table(userId,amount,message,status) values(?,?,?,?)";
 		ps = conn.prepareStatement(sqlQuery);
 		ps.setInt(1, order.getUserId());
 		ps.setFloat(2, order.getAmount());
 		ps.setString(3, order.getMessage());
 		ps.setInt(4, order.getStatus());
-		
-		ps.setString(5, entity.getProvince());
-		ps.setString(6, entity.getCity());
-		ps.setString(7, entity.getDetailAddress());
-		ps.setString(8, entity.getPhone());
-		ps.setString(9, entity.getName());
-		
 		ps.executeUpdate();
 		
 		//获得orderId

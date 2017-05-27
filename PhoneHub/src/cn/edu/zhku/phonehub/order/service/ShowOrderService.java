@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import cn.edu.zhku.phonehub.order.dao.ShowPreviewOrderDao;
 import cn.edu.zhku.phonehub.order.model.ShowPreviewOrder;
-import cn.edu.zhku.phonehub.order.model.entity.ShowPreviewOrderEntity;
+import cn.edu.zhku.phonehub.order.model.ShowPreviewOrderEntity;
 
 public class ShowOrderService {
 

@@ -11,7 +11,7 @@ public class ProductDao {
 	
 	/**
 	 * 功能：添加商品
-	 * 作者：yanghang
+	 * 作者：yanghang-------
 	 * @param map
 	 * @return
 	 */
@@ -87,7 +87,7 @@ public class ProductDao {
 			return false;
 	}
 	
-	public boolean dropProduct(Map map){
+	public boolean deleteProduct(Map map){
 		String sql = "update product_table set status = 1 where productId = ?";
 		Object[] params = {
 				map.get("productId")
@@ -108,12 +108,11 @@ public class ProductDao {
 	public List getProductList(Map map){
 		String sql = "select * from product_table where storeId = ?";
 		Object[] params={
-			map.get("storeId")
+			map.get("storeId")	
 		};
 		List ls = dbUtil.getList(sql, params);
 		return ls;
 	}
-	
 
 	/**
 	 * @param args

@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import cn.edu.zhku.phonehub.order.dao.CommitOrderDao;
 import cn.edu.zhku.phonehub.order.model.Order;
 import cn.edu.zhku.phonehub.order.model.OrderItem;
+import cn.edu.zhku.phonehub.order.model.OrderOrderItemEntity;
 import cn.edu.zhku.phonehub.order.model.ShowOrder;
 import cn.edu.zhku.phonehub.order.model.ShowPreviewOrder;
-import cn.edu.zhku.phonehub.order.model.entity.OrderOrderItemEntity;
 
 public class CommitOrderService {
 
@@ -60,14 +60,6 @@ public class CommitOrderService {
 		OrderOrderItemEntity entity = new OrderOrderItemEntity();
 		entity.setOrder(order);
 		entity.setOrderItemList(orderItemList);
-		
-		entity.setProvince(previewOrder.get(0).getProvince());
-		entity.setCity(previewOrder.get(0).getCity());
-		entity.setDetailAddress(previewOrder.get(0).getDetailAddress());
-		entity.setName(previewOrder.get(0).getUserName());
-		entity.setPhone(previewOrder.get(0).getPhone());
-		
-		System.out.println("CommitOrderService-------entity="+entity.toString());
 		
 		CommitOrderDao commitOrderDao = new CommitOrderDao();
 		showOrder = commitOrderDao.getCommitOrderFromDb(entity);
