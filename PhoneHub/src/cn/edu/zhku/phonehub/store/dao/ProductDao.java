@@ -1,5 +1,6 @@
 package cn.edu.zhku.phonehub.store.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -87,6 +88,10 @@ public class ProductDao {
 			return false;
 	}
 	
+	/**
+	 * 下架商品
+	 * 
+	 */
 	public boolean dropProduct(Map map){
 		String sql = "update product_table set status = 1 where productId = ?";
 		Object[] params = {
@@ -98,6 +103,23 @@ public class ProductDao {
 		else
 			return false;
 		
+	}
+	
+	/**
+	 * 重新上架商品
+	 * @param map
+	 * @return
+	 */
+	public boolean upProduct(Map map){
+		String sql = "update product_table set status = 0 where productId = ?";
+		Object[] params = {
+				map.get("productId")
+		};
+		int i = dbUtil.update(sql, params);
+		if(i==1)
+			return true;
+		else
+			return false;
 	}
 	
 	/**
@@ -114,13 +136,55 @@ public class ProductDao {
 		return ls;
 	}
 	
+	/**
+	 * 查询店铺各商品历史销量
+	 * @param map
+	 * @return
+	 */
+	public List getSaleList(Map map){
+		String sql = "select * from sale_view where storeId = ?";
+		Object[] params={
+				map.get("storeId")
+		};
+		List ls = dbUtil.getList(sql, params);
+		return ls;
+	}
+	
 
 	/**
 	 * @param args
 	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+//	public static void main(String[] args) {
+//		// TODO Auto-generated method stub
+//		
+//		ProductDao pd = new ProductDao();
+//		Map map = new HashMap();
+//		map.put("storeId", 1);
+		
+		//查询销量测试
+//		List ls = pd.getSaleList(map);
+//		for(int i = 0;i<ls.size();i++){
+//			HashMap<String,Object> resualtMap = (HashMap<String, Object>) ls.get(i);
+//			for (Map.Entry<String, Object> entry : resualtMap.entrySet()) {
+//				if(entry.getValue()==null)
+//					entry.setValue("");
+//				System.out.println("key= " + entry.getKey() + " and value= " + entry.getValue());
+//			}
+//			
+//		}
+		
+		//查询店铺商品测试
+//		List ls = pd.getProductList(map);
+//		for(int i = 0;i<ls.size();i++){
+//			HashMap<String,Object> resualtMap = (HashMap<String, Object>) ls.get(i);
+//			for (Map.Entry<String, Object> entry : resualtMap.entrySet()) {
+//				if(entry.getValue()==null)
+//					entry.setValue("");
+//				System.out.println("key= " + entry.getKey() + " and value= " + entry.getValue());
+//			}
+//			
+//		}
 
-	}
+//	}
 
 }

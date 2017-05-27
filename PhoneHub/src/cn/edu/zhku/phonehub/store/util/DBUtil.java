@@ -125,6 +125,14 @@ public class DBUtil{
 			return (Map)list.get(0);
 	}
 	
+	public Map getMap(String sql,Object[] params){
+		List list = getList(sql,params);
+		if(list.isEmpty())
+			return null;
+		else
+			return (Map)list.get(0);
+	}
+	
 	public int update(String sql,String[] params){
 		int recNo = 0;
 		try{
