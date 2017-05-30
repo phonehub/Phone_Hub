@@ -11,7 +11,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
 		<title>购物车页面</title>
-
 		<link href="../AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
 		<link href="../basic/css/demo.css" rel="stylesheet" type="text/css" />
 		<link href="../css/cartstyle.css" rel="stylesheet" type="text/css" />
@@ -65,25 +64,25 @@ function formsubmit() {
 		alert("成功");
 		}
 	</script>
-	<script type="text/javascript">
-												function totalPrice(op,one,i){
-													//alert("one"+one);
-													var buyNum = document.getElementById("buyNum"+i).value;
-													if(op==1){	//加法
-														buyNum = parseFloat(buyNum)+parseFloat(1);
-													}
-													else if(op==2){	//减法
-														buyNum = parseFloat(buyNum)-parseFloat(1);
-													}
-													//alert("buyNum="+buyNum);
-													var total = parseFloat(buyNum)*parseFloat(one);
-													//alert("total="+total);
-													//document.getElementById("totalPrices").value=total;
-													document.getElementById("totalPrices"+i).innerText=total;
-												}
-											</script>
-     
-  </head>
+		<script type="text/javascript">
+			function totalPrice(op,one,i){
+				//alert("one"+one);
+				var buyNum = document.getElementById("buyNum"+i).value;
+				if(op==1){	//加法
+					buyNum = parseFloat(buyNum)+parseFloat(1);
+				}
+				else if(op==2){	//减法
+					buyNum = parseFloat(buyNum)-parseFloat(1);
+				}
+				//alert("buyNum="+buyNum);
+				var total = parseFloat(buyNum)*parseFloat(one);
+				//alert("total="+total);
+				//document.getElementById("totalPrices").value=total;
+					document.getElementById("totalPrices"+i).innerText=total;
+				}
+		</script>
+
+	</head>
   
   <body>
   <%

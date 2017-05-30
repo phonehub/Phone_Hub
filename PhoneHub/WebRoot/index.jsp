@@ -28,117 +28,121 @@
 		<link href="./css/hmstyle.css" rel="stylesheet" type="text/css" />
 		<script src="./AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
 		<script src="./AmazeUI-2.4.2/assets/js/amazeui.min.js"></script>
+		
+		
+		<link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,700|Raleway:300,300i,400,700" rel="stylesheet">
+
+<!-- Favicon
+============================================ -->
+<link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
+
+<!-- CSS  -->
+<!-- Bootstrap CSS
+============================================ -->
+<link rel="stylesheet" href="cssindex/bootstrap.min.css">
+
+<!-- font-awesome CSS
+============================================ -->
+<link rel="stylesheet" href="cssindex/font-awesome.min.css">
+
+<!-- owl.carousel CSS
+============================================ -->
+<link rel="stylesheet" href="cssindex/owl.carousel.css">
+<link rel="stylesheet" href="cssindex/owl.theme.css">
+
+<!-- simple-overlay CSS
+============================================ -->
+<link rel="stylesheet" href="cssindex/simple-overlay.css">
+		
+<!-- main CSS
+============================================ -->		
+<link rel="stylesheet" href="cssindex/style.css">
+
+<!-- responsive CSS
+============================================ -->		
+<link rel="stylesheet" href="cssindex/responsive.css">
 
 
 	</head>
 
 	<body>
-		<!--顶部导航条 -->
-		<div class="am-container header">
-			<ul class="message-l">
-				<div class="topMessage">
-					<div class="menu-hd">
-						<a href="#" target="_top" class="h">亲，请登录</a>
-						<a href="#" target="_top">免费注册</a>
-					</div>
+		<header id="header-section" class="navbar-fixed-top">
+	<nav class="navbar navbar-default">
+	  <div class="container">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<!-- logo -->
+			<a class="navbar-brand" href="index.html">
+				<div class="logo">
+					<span>DOTAPPS</span>
 				</div>
-			</ul>
-			<ul class="message-r">
-				<div class="topMessage home">
-					<div class="menu-hd">
-						<a href="#" target="_top" class="h">商城首页</a>
-					</div>
-				</div>
-				<div class="topMessage my-shangcheng">
-					<div class="menu-hd MyShangcheng">
-						<a href="/PhoneHub/user/information.jsp" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a>
-					</div>
-				</div>
-				<div class="topMessage mini-cart">
-					<div class="menu-hd">
-						<a id="mc-menu-hd" href="/PhoneHub/cart/showcart.jsp" target="_top"><i
-							class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong
-							id="J_MiniCartNum" class="h">0</strong> </a>
-					</div>
-				</div>
-			</ul>
+			</a>
+
 		</div>
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-		<!--悬浮搜索框-->
-
-		<div class="nav white">
-			<div class="logo">
-				<img src="./Image/logo.png" />
+			<!-- menu list -->
+		  <ul class="nav navbar-nav navbar-right">
+			<li><a href="#screenshots-section" class="smoothScroll">商城首页</a></li>
+			<li><a href="#pricing-section" class="smoothScroll">注册</a></li>
+			<li><a href="#testimonial-section" class="smoothScroll hidden-sm">登录</a></li>                
+			<li><a href="#subscribe-section" class="smoothScroll">购物车</a></li>
+		  </ul>
+		</div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+	</nav>
+</header>
+<!-- / END HEADER SECTION -->
+<script>
+ function keyup_submit(e){ 
+	var evt = window.event || e; 
+	if (evt.keyCode == 13){
+		alert("success");
+    }
+  }
+</script>
+<!-- START BANNER SECTION -->
+<section id="banner-section">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-5 col-sm-5">
+				<div class="banner-mobile">
+					<img src="Image/banner-mobile2.png" alt="banner-mobile" class="img-responsive" />
+				</div>
 			</div>
-			<div class="logoBig">
-				<li>
-					<img src="./Image/logo.png" height="90" width="200" />
-				</li>
+			<div class="col-lg-5 col-sm-7">
+				<div class="banner-cont">
+					<h1>Welcome to PhoneHub</h1>
+					<p>我们----专注手机两星期</p>
+					</br>
+					<form>
+						<input type="text" id="email" placeholder="Write your email here"  onkeydown=keyup_submit(); />
+					</form>
+				</div>
 			</div>
-
-			<div class="search-bar pr">
-				<a name="index_none_header_sysc" href="#"></a>
-				<form>
-				<select size="1" name="searchType">
-							<option value="品牌">
-								品牌
-							</option>
-							<option value="商品" selected>
-								商品
-							</option>
-							<option value="店铺">
-								店铺
-							</option>
-					<select>
-					<td>
-						<input id="searchInput" name="index_none_header_sysc" type="text"
-							placeholder="搜索"  style="width:50px" autocomplete="off">
-							
-					</td>
-					<td>
-						<input id="ai-topsearch" class="submit am-btn" value="搜索"
-							index="1" type="submit">
-					</td>
-					
-				</form>
-			</div>
+			<div class="col-lg-2 col-sm-0"></div>
 		</div>
+	</div>
+</section>
 
-		<div class="bannerTwo">
-			<!--轮播 -->
-			<div class="am-slider am-slider-default scoll" data-am-flexslider
-				id="demo-slider-0">
-				<ul class="am-slides">
-
-					<li class="banner2">
-						<a><img src="./Image/index/hongmiNote4x.jpg" weigth="300px"
-								height="720px" /> </a>
-					</li>
-					<li class="banner3">
-						<a><img src="./Image/index/xiaomi5c.jpg" weigth="300px"
-								height="720px" /> </a>
-					</li>
-					<li class="banner4">
-						<a><img src="./Image/index/meilan5s.jpg" weigth="300px"
-								height="720px" /> </a>
-					</li>
-				</ul>
-			</div>
-			<div class="clear"></div>
-		</div>
-		<!-- 网页底部 -->
-		>
-		<div class="footer ">
-
-			<div class="footer-bd ">
-				<p>
-					<a href="# ">PhoneHub</a>
-					<a href="# ">合作伙伴</a>
-					<a href="# ">联系我们</a>
-					<a href="# ">网站地图</a>
-					<em>©2017 PhoneHub Corporation. All rights reserved</em>
-				</p>
+<!-- START FOOTER SECTION -->
+<div id="footer-section">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="footer-cont">
+					<p>Copyright &copy; 2017.Company name All rights reserved.<a target="_blank" href="http://www.moke8.com/html/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+				</div>
 			</div>
 		</div>
+	</div>
+</div>
 	</body>
 </html>
