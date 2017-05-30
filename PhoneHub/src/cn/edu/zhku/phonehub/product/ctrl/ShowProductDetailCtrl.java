@@ -45,7 +45,7 @@ public class ShowProductDetailCtrl extends HttpServlet {
 		}finally{
 			RequestDispatcher rd = null;
 			request.setAttribute("productDetail", productDetail);
-			rd = request.getRequestDispatcher("/searchProduct/showSearchProduct.jsp");	//显示商品概要信息的界面
+			rd = request.getRequestDispatcher("/searchProduct/showSearchProduct.jsp");	
 			rd.forward(request, response);
 		}
 		

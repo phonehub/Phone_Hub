@@ -29,7 +29,8 @@ import cn.edu.zhku.phonehub.store.util.FileUtil;
 public class CreateStoreSever {
 	
 	
-	public void createStore(HttpServletRequest request){
+	public boolean createStore(HttpServletRequest request){
+		boolean resualt = false;
 		// 文件临时存放路径
 		String tempPath = request.getSession().getServletContext().getRealPath("\\")+"Image\\temp\\";
 		//测试---打印temp绝对路径
@@ -73,7 +74,7 @@ public class CreateStoreSever {
 				else{
 					savePath = request.getSession().getServletContext().getRealPath("\\")+"Image\\"+item.getFieldName()+"\\";
 					//测试----打印路径
-					//System.out.println(savePath);
+					//System.out.println("here-----"+savePath);
 					
 					relativePath = FileUtil.saveFile(item, savePath);
 					//测试----打印绝对路径
@@ -92,7 +93,7 @@ public class CreateStoreSever {
 				}
 			}
 			
-			map.put("userId",(String)request.getSession().getAttribute("userId"));
+			map.put("userId",String.valueOf(request.getSession().getAttribute("userId")));
 			//测试-----打印map
 			Iterator iter = map.entrySet().iterator();
 			while (iter.hasNext()) {
@@ -101,11 +102,16 @@ public class CreateStoreSever {
 			}
 			
 			StoreDao storeDao = new StoreDao();
-			storeDao.insertStore(map);
+			if(storeDao.insertStore(map)){
+				resualt=true;
+			}
+			return resualt;
 			
 		}catch(Exception e){
 			e.printStackTrace();
+			return resualt;
 		}
+		
 	}
 	
 

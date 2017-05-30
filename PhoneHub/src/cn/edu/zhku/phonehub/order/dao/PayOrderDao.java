@@ -29,18 +29,19 @@ public class PayOrderDao {
 		if(conn==null){
 			throw new Exception("数据库连接不成功");
 		}
-		
 		String sqlQuery = null;
-		sqlQuery = "Select * from user_table where userId=? and passWord=?";
-		ps = conn.prepareStatement(sqlQuery);
-		ps.setInt(1, userId);
-		ps.setString(2, userPassword);
-		rs = ps.executeQuery();
-		//判断用户的身份
-		if(!rs.next()){
-			System.out.println("身份认证通失败");
-			return null;
-		}
+		
+		//身份认证暂时不做
+//		sqlQuery = "Select * from user_table where userId=? and passWord=?";
+//		ps = conn.prepareStatement(sqlQuery);
+//		ps.setInt(1, userId);
+//		ps.setString(2, userPassword);
+//		rs = ps.executeQuery();
+//		//判断用户的身份
+//		if(!rs.next()){
+//			System.out.println("身份认证通失败");
+//			return null;
+//		}
 		//扣费
 			//获得总价
 			float amount ;
@@ -48,6 +49,7 @@ public class PayOrderDao {
 			ps = conn.prepareStatement(sqlQuery);
 			ps.setInt(1, orderId);
 			rs = ps.executeQuery();
+			System.out.println("orderId="+orderId);
 			if(rs.next()){
 				amount = rs.getFloat("amount");
 				System.out.println("获得总价："+amount);

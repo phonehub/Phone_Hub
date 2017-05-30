@@ -3,6 +3,7 @@ package cn.edu.zhku.phonehub.order.ctrl;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,14 +36,27 @@ public class ModifyOrderCtrl extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html");
 		
-		int modify_orderId = (Integer) request.getSession().getAttribute("modify_orderId");
-		String modify_province = (String) request.getSession().getAttribute("modify_province");
-		String modify_city = (String) request.getSession().getAttribute("modify_city");
-		String modify_detailAddress = (String) request.getSession().getAttribute("modify_detailAddress");
-		String modify_phone = (String) request.getSession().getAttribute("modify_phone");
-		String modify_name = (String) request.getSession().getAttribute("modify_name");
-		String modify_amount = (String) request.getSession().getAttribute("modify_amount");
-		String modify_message = (String) request.getSession().getAttribute("modify_message");
+//		int modify_orderId = (Integer) request.getSession().getAttribute("modify_orderId");
+//		String modify_province = (String) request.getSession().getAttribute("modify_province");
+//		String modify_city = (String) request.getSession().getAttribute("modify_city");
+//		String modify_detailAddress = (String) request.getSession().getAttribute("modify_detailAddress");
+//		String modify_phone = (String) request.getSession().getAttribute("modify_phone");
+//		String modify_name = (String) request.getSession().getAttribute("modify_name");
+//		String modify_amount = (String) request.getSession().getAttribute("modify_amount");
+//		String modify_message = (String) request.getSession().getAttribute("modify_message");
+		
+		String getOrderId = request.getParameter("orderId");
+		int modify_orderId =0;
+		if(getOrderId!=null)
+			modify_orderId = Integer.parseInt(getOrderId);
+		String modify_province = request.getParameter("province");
+		String modify_city = request.getParameter("city");
+		String modify_detailAddress = request.getParameter("detailAddress");
+		String modify_phone = request.getParameter("phone");
+		String modify_name = request.getParameter("name");
+		String modify_amount = request.getParameter("amount");
+		String modify_message = request.getParameter("message");
+		
 		
 		ModifyOrderEntity entity = new ModifyOrderEntity();
 		entity.setOrderId(modify_orderId);
@@ -54,15 +68,30 @@ public class ModifyOrderCtrl extends HttpServlet {
 		entity.setName(modify_name);
 		entity.setPhone(modify_phone);
 		
-		//System.out.println("ModifyOrderCtrl-----entity="+entity.toString());
+		System.out.println("ModifyOrderCtrl-----entity="+entity.toString());
 		StoreSeeOrder order = null;
-		
+		String msg = null;
 		try {
 			order = ModifyOrderService.getModifyResult(entity);
+			System.out.println("ModifyOrderCtrl-----order="+order);
+			
+			if(order!=null){
+				msg="订单"+order.getOrderId()+"修改成功";
+			}
+			else {
+				msg = "订单修改失败";
+				
+			}
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally{
+			RequestDispatcher rd = null;
+			request.setAttribute("msg", msg);
+			System.out.println("msg="+msg);
+			rd = request.getRequestDispatcher("/order/ModifyOrder.jsp");	
+			rd.forward(request, response);
 		}
 		
 	}

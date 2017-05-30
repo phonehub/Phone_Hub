@@ -12,11 +12,14 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import cn.edu.zhku.phonehub.store.dao.ProductDao;
 import cn.edu.zhku.phonehub.store.util.FileUtil;
 
 public class AddProductServer {
 	
-	public void addProduct(HttpServletRequest request){
+	public boolean addProduct(HttpServletRequest request){
+		
+		boolean resualt = false;
 		
 		// 商品图片的临时存放路径
 		String tempPath = request.getSession().getServletContext().getRealPath("\\")+"Image\\temp\\";
@@ -84,9 +87,16 @@ public class AddProductServer {
 				Map.Entry entry = (Map.Entry) iter.next();
 				System.out.println((String)entry.getKey()+":"+entry.getValue());
 			}
+			ProductDao pd = new ProductDao();
+			if(pd.insertProduct(map)){
+				resualt=true;
+				return resualt;
+			}
 		}catch(Exception e){
 			e.printStackTrace();
+			return resualt;
 		}
+		return resualt;
 	}
 	
 	

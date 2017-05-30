@@ -35,10 +35,41 @@ public class StoreSeeOrderCtrl extends HttpServlet {
 		response.setContentType("text/html");
 		
 		//获得参数
-		int select = (Integer) request.getSession().getAttribute("storeSeeOrder_select");
-		int orderId = (Integer) request.getSession().getAttribute("storeSeeOrder_orderId");
-		int userId = (Integer) request.getSession().getAttribute("storeSeeOrder_userId");
-		String orderTime = (String) request.getSession().getAttribute("storeSeeOrder_orderTime");
+//		int select_ = (Integer) request.getSession().getAttribute("storeSeeOrder_select");
+//		int orderId = (Integer) request.getSession().getAttribute("storeSeeOrder_orderId");
+//		int userId = (Integer) request.getSession().getAttribute("storeSeeOrder_userId");
+//		String orderTime = (String) request.getSession().getAttribute("storeSeeOrder_orderTime");
+		
+		int select = 0 ;
+		int orderId = 0 ;
+		int userId = 0 ;
+		String orderTime = null;
+		
+		String sselect = request.getParameter("select");
+		if(sselect!=null)
+			 select = Integer.parseInt(request.getParameter("select"));		//操作索引
+		
+		String data = request.getParameter("data");
+		
+		String index = request.getParameter("index");
+		if(index!=null){
+			if(index.equals("orderTime")){
+				select = 9;
+				orderTime = data;
+			}
+			else if(index.equals("orderId")){
+				select = 8;
+				orderId = Integer.parseInt(data);
+			}
+			else if(index.equals("userId")){
+				select = 10;
+				userId = Integer.parseInt(data);
+			}
+		}
+		
+		System.out.println("select="+select);
+		System.out.println("index="+index);
+		System.out.println("data="+data);
 		
 		//封装
 		StoreSeeOrderEntity entity = new StoreSeeOrderEntity();
@@ -59,7 +90,7 @@ public class StoreSeeOrderCtrl extends HttpServlet {
 		}finally{
 			RequestDispatcher rd = null;
 			request.setAttribute("storeSeeOrderList", storeSeeOrderList);
-			rd = request.getRequestDispatcher("/order/ShowStoreSeeOrder.jsp");	//显示订单预览界面
+			rd = request.getRequestDispatcher("/order/SearchStoreSeeOrder.jsp");	//显示订单预览界面
 			rd.forward(request, response);
 		}
 		

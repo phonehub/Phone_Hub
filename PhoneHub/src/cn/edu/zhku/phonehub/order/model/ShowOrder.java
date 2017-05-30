@@ -5,8 +5,7 @@ import java.util.ArrayList;
 public class ShowOrder {
 
 	ArrayList<OrderProductInfo> productInfo = null;
-	
-	
+
 	//买家信息
 	private int userId;				//买家编号
 	private String name;			//收件人名字
@@ -19,11 +18,15 @@ public class ShowOrder {
 	private int orderId;			//订单编号
 	private String orderTime;		//支付时间
 	private String createTime;		//创建时间
+	private String sendTime;		//发货时间
+	private String getTime;			//收货时间
 	private String message;			//
 	private String status;			//订单状态
 	private float amount;			//总价
 	private String storeName;		//店铺名称
 	
+
+
 
 
 	@Override
@@ -32,9 +35,30 @@ public class ShowOrder {
 				+ ", name=" + name + ", province=" + province + ", city="
 				+ city + ", detailAddress=" + detailAddress + ", phone="
 				+ phone + ", orderId=" + orderId + ", orderTime=" + orderTime
-				+ ", createTime=" + createTime + ", message=" + message
-				+ ", status=" + status + ", amount=" + amount + ", storeName="
-				+ storeName + "]";
+				+ ", createTime=" + createTime + ", sendTime=" + sendTime
+				+ ", getTime=" + getTime + ", message=" + message + ", status="
+				+ status + ", amount=" + amount + ", storeName=" + storeName
+				+ "]";
+	}
+
+
+	public String getSendTime() {
+		return sendTime;
+	}
+
+
+	public String getGetTime() {
+		return getTime;
+	}
+
+
+	public void setSendTime(String sendTime) {
+		this.sendTime = sendTime;
+	}
+
+
+	public void setGetTime(String getTime) {
+		this.getTime = getTime;
 	}
 
 

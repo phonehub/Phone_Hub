@@ -1,6 +1,181 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  
+  <!-- 徐沛鑫    -->
+   <servlet>
+    <servlet-name>Register</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.user.ctrl.RegisterCtrl</servlet-class>
+  </servlet>
+   <servlet>
+    <servlet-name>login</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.user.ctrl.LoginCtrl</servlet-class>
+  </servlet>
+ 
+   <servlet>
+    <servlet-name>userctrl</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.user.ctrl.UserCtrl</servlet-class>
+  </servlet>
+    <servlet>
+    <servlet-name>DelCart</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.cart.ctrl.DelCart</servlet-class>
+  </servlet>
+
   <servlet>
+    <servlet-name>addtocart</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.cart.ctrl.AddToCart</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DeCart</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.cart.ctrl.DecreaseCart</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>PlusCart</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.cart.ctrl.PlusCart</servlet-class>
+  </servlet>
+    <servlet>
+    <servlet-name>AddressCtrl</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.address.ctrl.AddressCtrl</servlet-class>
+  </servlet>
+   <!-- 徐沛鑫    -->
+  
+
+
+
+<!--   徐沛鑫     -->
+ <servlet-mapping>
+    <servlet-name>Register</servlet-name>
+    <url-pattern>/user/servlet/Register</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>login</servlet-name>
+    <url-pattern>/user/Login</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>addtocart</servlet-name>
+    <url-pattern>/cart/addtocart</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DelCart</servlet-name>
+    <url-pattern>/cart/DelCart</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DeCart</servlet-name>
+    <url-pattern>/cart/DeCart</url-pattern>
+  </servlet-mapping>
+ <servlet-mapping>
+    <servlet-name>PlusCart</servlet-name>
+    <url-pattern>/cart/PlusCart</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>userctrl</servlet-name>
+    <url-pattern>/user/ModifyCtrl</url-pattern>
+  </servlet-mapping>
+ <servlet-mapping>
+    <servlet-name>AddressCtrl</servlet-name>
+    <url-pattern>/user/AddressCtrl</url-pattern>
+  </servlet-mapping>
+ <!-- 徐沛鑫    -->
+ 
+ <!--hang-->
+<servlet>
+    <servlet-name>CreateStoreCtrl</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.store.ctrl.CreateStoreCtrl</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>CreateStoreCtrl</servlet-name>
+    <url-pattern>/servlet/CreateStoreCtrl</url-pattern>
+</servlet-mapping>
+
+<servlet>
+    <servlet-name>AddProductCtrl</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.store.ctrl.AddProductCtrl</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>AddProductCtrl</servlet-name>
+    <url-pattern>/servlet/AddProductCtrl</url-pattern>
+</servlet-mapping>
+
+<servlet>
+    <description></description>
+    <display-name>AlterCountCtrl</display-name>
+    <servlet-name>AlterCountCtrl</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.store.ctrl.AlterCountCtrl</servlet-class>
+  </servlet>
+<servlet-mapping>
+    <servlet-name>AlterCountCtrl</servlet-name>
+    <url-pattern>/AlterCountCtrl</url-pattern>
+</servlet-mapping>
+  
+<servlet>
+    <description></description>
+    <display-name>PassApplyCtrl</display-name>
+    <servlet-name>PassApplyCtrl</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.store.ctrl.PassApplyCtrl</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>PassApplyCtrl</servlet-name>
+    <url-pattern>/PassApplyCtrl</url-pattern>
+</servlet-mapping>
+
+<servlet>
+    <description></description>
+    <display-name>RefuseApplyCtrl</display-name>
+    <servlet-name>RefuseApplyCtrl</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.store.ctrl.RefuseApplyCtrl</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>RefuseApplyCtrl</servlet-name>
+    <url-pattern>/RefuseApplyCtrl</url-pattern>
+</servlet-mapping>
+
+<servlet>
+    <description></description>
+    <display-name>GetStoreListCtrl</display-name>
+    <servlet-name>GetStoreListCtrl</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.store.ctrl.GetStoreListCtrl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetStoreListCtrl</servlet-name>
+    <url-pattern>/GetStoreListCtrl</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetStoreDetail</display-name>
+    <servlet-name>GetStoreDetail</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.store.ctrl.GetStoreDetail</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetStoreDetail</servlet-name>
+    <url-pattern>/GetStoreDetail</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>DropProducrCtrl</display-name>
+    <servlet-name>DropProducrCtrl</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.store.ctrl.DropProducrCtrl</servlet-class>
+  </servlet>
+   <servlet-mapping>
+    <servlet-name>DropProducrCtrl</servlet-name>
+    <url-pattern>/DropProducrCtrl</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <description></description>
+    <display-name>GetProductListCtrl</display-name>
+    <servlet-name>GetProductListCtrl</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.store.ctrl.GetProductListCtrl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetProductListCtrl</servlet-name>
+    <url-pattern>/GetProductListCtrl</url-pattern>
+  </servlet-mapping>
+ <!--hang-->
+ 
+ <!-- 惠文-->
+<servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>SearchProductCtrl</servlet-name>
@@ -23,18 +198,6 @@
     <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>CommitOrderCtrl</servlet-name>
     <servlet-class>cn.edu.zhku.phonehub.order.ctrl.CommitOrderCtrl</servlet-class>
-  </servlet>
-  <servlet>
-    <description>This is the description of my J2EE component</description>
-    <display-name>This is the display name of my J2EE component</display-name>
-    <servlet-name>CreateStoreCtrl</servlet-name>
-    <servlet-class>cn.edu.zhku.phonehub.store.ctrl.CreateStoreCtrl</servlet-class>
-  </servlet>
-  <servlet>
-    <description>This is the description of my J2EE component</description>
-    <display-name>This is the display name of my J2EE component</display-name>
-    <servlet-name>AddProductCtrl</servlet-name>
-    <servlet-class>cn.edu.zhku.phonehub.store.ctrl.AddProductCtrl</servlet-class>
   </servlet>
   <servlet>
     <description>This is the description of my J2EE component</description>
@@ -72,42 +235,59 @@
     <servlet-name>ModifyOrderCtrl</servlet-name>
     <servlet-class>cn.edu.zhku.phonehub.order.ctrl.ModifyOrderCtrl</servlet-class>
   </servlet>
+
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ShowShopcartCtrl</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.order.ctrl.ShowShopcartCtrl</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ConsumerSeeOrderCtrl</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.order.ctrl.ConsumerSeeOrderCtrl</servlet-class>
+  </servlet>
+<servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ConsumerSeeOrderDetailCtrl</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.order.ctrl.ConsumerSeeOrderDetailCtrl</servlet-class>
+  </servlet>
+ <!-- 惠文-->
+  <!-- 惠文-->
   <servlet-mapping>
-    <servlet-name>ShowProductDetailCtrl</servlet-name>
-    <url-pattern>/servlet/ShowProductDetailCtrl</url-pattern>
-  </servlet-mapping>
+  <servlet-name>ShowProductDetailCtrl</servlet-name>
+  <url-pattern>/servlet/ShowProductDetailCtrl</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>ShowOrderCtrl</servlet-name>
+  <url-pattern>/servlet/ShowOrderCtrl</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>CommitOrderCtrl</servlet-name>
+  <url-pattern>/servlet/CommitOrderCtrl</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>CreateStoreCtrl</servlet-name>
+  <url-pattern>/servlet/CreateStoreCtrl</url-pattern>
+ </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>ShowOrderCtrl</servlet-name>
-    <url-pattern>/servlet/ShowOrderCtrl</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>CommitOrderCtrl</servlet-name>
-    <url-pattern>/servlet/CommitOrderCtrl</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>CreateStoreCtrl</servlet-name>
-    <url-pattern>/servlet/CreateStoreCtrl</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>AddProductCtrl</servlet-name>
-    <url-pattern>/servlet/AddProductCtrl</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>PayOrderCtrl</servlet-name>
-    <url-pattern>/servlet/PayOrderCtrl</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>GetProductCtrl</servlet-name>
-    <url-pattern>/servlet/GetProductCtrl</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>StoreSeeOrderCtrl</servlet-name>
-    <url-pattern>/servlet/StoreSeeOrderCtrl</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>SearchProductCtrl</servlet-name>
-    <url-pattern>/servlet/SearchProductCtrl</url-pattern>
-  </servlet-mapping>
+  <servlet-name>PayOrderCtrl</servlet-name>
+  <url-pattern>/servlet/PayOrderCtrl</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>GetProductCtrl</servlet-name>
+  <url-pattern>/servlet/GetProductCtrl</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>StoreSeeOrderCtrl</servlet-name>
+  <url-pattern>/servlet/StoreSeeOrderCtrl</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>SearchProductCtrl</servlet-name>
+  <url-pattern>/servlet/SearchProductCtrl</url-pattern>
+ </servlet-mapping>
   <servlet-mapping>
     <servlet-name>SendOrderCtrl</servlet-name>
     <url-pattern>/servlet/SendOrderCtrl</url-pattern>
@@ -116,81 +296,24 @@
     <servlet-name>ModifyOrderCtrl</servlet-name>
     <url-pattern>/servlet/ModifyOrderCtrl</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ShowShopcartCtrl</servlet-name>
+    <url-pattern>/servlet/ShowShopcartCtrl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ConsumerSeeOrderCtrl</servlet-name>
+    <url-pattern>/servlet/ConsumerSeeOrderCtrl</url-pattern>
+  </servlet-mapping>
+<servlet-mapping>
+    <servlet-name>ConsumerSeeOrderDetailCtrl</servlet-name>
+    <url-pattern>/servlet/ConsumerSeeOrderDetailCtrl</url-pattern>
+  </servlet-mapping>
+  <!-- 惠文-->
+ 
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
   <login-config>
     <auth-method>BASIC</auth-method>
   </login-config>
-  <filter>
-    <display-name>EnCodingFilter</display-name>
-    <filter-name>EnCodingFilter</filter-name>
-    <filter-class>cn.edu.zhku.phonehub.filter.EnCodingFilter</filter-class>
-  </filter>
-  <filter-mapping>
-    <filter-name>EnCodingFilter</filter-name>
-    <url-pattern>/EnCodingFilter</url-pattern>
-  </filter-mapping>
-  <filter>
-    <display-name>PowerFilter</display-name>
-    <filter-name>PowerFilter</filter-name>
-    <filter-class>cn.edu.zhku.phonehub.filter.PowerFilter</filter-class>
-    <init-param>    
-	<param-name>excludedPages</param-name>    
-	<param-value>index.jsp</param-value>    
-	</init-param>
-  </filter>
-  <filter-mapping>
-    <filter-name>PowerFilter</filter-name>
-    <url-pattern>*.jsp</url-pattern>
-  </filter-mapping>
-  <servlet>
-    <description></description>
-    <display-name>AlterCountCtrl</display-name>
-    <servlet-name>AlterCountCtrl</servlet-name>
-    <servlet-class>cn.edu.zhku.phonehub.store.ctrl.AlterCountCtrl</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AlterCountCtrl</servlet-name>
-    <url-pattern>/AlterCountCtrl</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>DropProducrCtrl</display-name>
-    <servlet-name>DropProducrCtrl</servlet-name>
-    <servlet-class>cn.edu.zhku.phonehub.store.ctrl.DropProducrCtrl</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>DropProducrCtrl</servlet-name>
-    <url-pattern>/DropProducrCtrl</url-pattern>
-  </servlet-mapping>
-  <filter>
-    <display-name>AdminFilter</display-name>
-    <filter-name>AdminFilter</filter-name>
-    <filter-class>cn.edu.zhku.phonehub.filter.AdminFilter</filter-class>
-  </filter>
-  <filter-mapping>
-    <filter-name>AdminFilter</filter-name>
-    <url-pattern>/AdminFilter</url-pattern>
-  </filter-mapping>
-  <servlet>
-    <description></description>
-    <display-name>GetStoreListCtrl</display-name>
-    <servlet-name>GetStoreListCtrl</servlet-name>
-    <servlet-class>cn.edu.zhku.phonehub.store.ctrl.GetStoreListCtrl</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>GetStoreListCtrl</servlet-name>
-    <url-pattern>/GetStoreListCtrl</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>GetStoreDetail</display-name>
-    <servlet-name>GetStoreDetail</servlet-name>
-    <servlet-class>cn.edu.zhku.phonehub.store.ctrl.GetStoreDetail</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>GetStoreDetail</servlet-name>
-    <url-pattern>/GetStoreDetail</url-pattern>
-  </servlet-mapping>
 </web-app>

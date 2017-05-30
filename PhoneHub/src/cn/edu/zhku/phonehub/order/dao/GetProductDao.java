@@ -22,7 +22,7 @@ public class GetProductDao {
 		if(conn==null){
 			throw new Exception("数据库连接不成功");
 		}
-		
+		System.out.println("GetProductDao-------orderId="+orderId);
 		//更新订单信息（1未付款，2已付款未发货，3已付款已发货、4已收货）
 		String sqlQuery = null;
 		sqlQuery = "Update order_table set status = ? where orderId = ?";

@@ -30,9 +30,17 @@ public class PayOrderCtrl extends HttpServlet {
 		response.setContentType("text/html");
 		
 		//获得参数
-		int orderId = (Integer) request.getSession().getAttribute("orderId");
+//		int orderId = (Integer) request.getSession().getAttribute("orderId");
+		
 		int userId = (Integer) request.getSession().getAttribute("userId");
 		String userPassword = (String) request.getSession().getAttribute("userPassword");
+		System.out.println("userPassword====="+userPassword);
+		
+		int orderId = 0;
+		String orderId_ = request.getParameter("orderId");
+		if(orderId_!=null){
+			orderId = Integer.parseInt(orderId_);
+		}
 		
 		ShowOrder showOrder = null;
 		

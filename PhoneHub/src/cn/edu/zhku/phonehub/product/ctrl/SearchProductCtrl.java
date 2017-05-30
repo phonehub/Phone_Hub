@@ -43,11 +43,12 @@ public class SearchProductCtrl extends HttpServlet {
 		String searchInfo = (String)request.getParameter("searchInfo");
 		System.out.println("ctrl----searchType="+searchType);
 		System.out.println("ctrl----searchInfo="+searchInfo);
+		//searchType = 店铺/商品/品牌/所有/价格升序/价格降序
+		
 		//封装
 		SearchProductEntity searchGoodsEntity = new SearchProductEntity();
 		searchGoodsEntity.setSearchType(searchType);
 		searchGoodsEntity.setSearchInfo(searchInfo);
-		
 		
 		ArrayList<SearchProductInfo> productList = null;
 		try {
@@ -60,7 +61,7 @@ public class SearchProductCtrl extends HttpServlet {
 		}finally{
 			RequestDispatcher rd = null;
 			request.setAttribute("productList", productList);
-			rd = request.getRequestDispatcher("/searchProduct/showSearchProduct.jsp");	//显示商品概要信息的界面
+			rd = request.getRequestDispatcher("/searchProduct/searchProducts.jsp");	//显示商品概要信息的界面
 			rd.forward(request, response);
 			
 		}

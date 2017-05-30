@@ -36,10 +36,15 @@ public class AddProductCtrl extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		as.addProduct(request);
+		if(as.addProduct(request)){
+			PrintWriter out=response.getWriter();
+			out.print("<script language='JavaScript'>alert('success');</script>");
+		}
+		else{
+			PrintWriter out=response.getWriter();
+			out.print("<script language='JavaScript'>alert('faile');</script>");
+		}
 
-//		PrintWriter out = response.getWriter();
-//		out.write("success");
 	}
 
 	

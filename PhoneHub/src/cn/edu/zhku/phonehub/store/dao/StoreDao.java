@@ -60,7 +60,7 @@ public class StoreDao {
 	 * @return
 	 */
 	public boolean passApply(Map map){
-		String sql = "update store_table set status = 0 where storeId = ?";
+		String sql = "update store_table set status = 1 where storeId = ?";
 		Object[] params = {
 				map.get("storeId")
 		};
@@ -79,9 +79,9 @@ public class StoreDao {
 	 * @return
 	 */
 	public Map getApplyDetail(Map map){
-		String sql = "select * from store_table where storeId = ?";
+		String sql = "select * from store_table where userId = ?";
 		Object[] params = {
-				map.get("storeId")
+				map.get("userId")
 		};
 		Map resualtMap = dbUtil.getMap(sql, params);
 		return resualtMap;
@@ -144,7 +144,7 @@ public class StoreDao {
 	/**
 	 * @param args
 	 */
-//	public static void main(String[] args) {
+	public static void main(String[] args) {
 		
 //		// TODO Auto-generated method stub
 //		Map<String,String> map = new HashMap<String,String>();
@@ -158,20 +158,20 @@ public class StoreDao {
 //		StoreDao sd = new StoreDao();
 //		System.out.println(sd.insertStore(map));
 		
-//		StoreDao sd = new StoreDao();
-//		Map<String,Object> map = new HashMap<String,Object>();
+		StoreDao sd = new StoreDao();
+		Map<String,Object> map = new HashMap<String,Object>();
 		
 //		测试获取店铺列表
-//		List ls = sd.getStoreList();
-//		for(int i = 0;i<ls.size();i++){
-//			HashMap<String,Object> resualtMap = (HashMap<String, Object>) ls.get(i);
-//			for (Map.Entry<String, Object> entry : resualtMap.entrySet()) {
-//				if(entry.getValue()==null)
-//					entry.setValue("");
-//				System.out.println("key= " + entry.getKey() + " and value= " + entry.getValue());
-//			}
-//			
-//		}
+		List ls = sd.getStoreList();
+		for(int i = 0;i<ls.size();i++){
+			HashMap<String,Object> resualtMap = (HashMap<String, Object>) ls.get(i);
+			for (Map.Entry<String, Object> entry : resualtMap.entrySet()) {
+				if(entry.getValue()==null)
+					entry.setValue("");
+				System.out.println("key= " + entry.getKey() + " and value= " + entry.getValue());
+			}
+			
+		}
 		
 //		测试店铺审核通过
 //		map.put("storeId", 3);
@@ -179,6 +179,23 @@ public class StoreDao {
 //			System.out.print(true);
 //		System.out.print(false);
 		
-//	}
+		//测试获取店铺详细信息
+//		StoreDao sd = new StoreDao();
+//		Map map = new HashMap();
+//		map.put("userId", 1);
+//		Map<String,Object> map1 = sd.getApplyDetail(map);
+//		if(!map.isEmpty()){
+//			for (Map.Entry<String, Object> entry : map1.entrySet()) {
+//				if(entry.getValue()==null)
+//					entry.setValue("");
+//				System.out.println("key= " + entry.getKey() + " and value= " + entry.getValue());
+//			}
+//			System.out.print(true);
+//		}
+//		else{
+//			System.out.print(false);
+//		}
+//		
+	}
 
 }

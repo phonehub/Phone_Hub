@@ -38,7 +38,8 @@ public class ProductDao {
 				"description," +
 				"image1," +
 				"image2," +
-				"image3)";
+				"image3)"+
+				"values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		String[] params={
 				map.get("productName"),
 				map.get("storeId"),
@@ -79,7 +80,7 @@ public class ProductDao {
 		String sql = "update product_table set num=? where productId = ?";
 		Object[] params = {
 				map.get("num"),
-				map.get("num")
+				map.get("productId")
 		};
 		int i = dbUtil.update(sql, params);
 		if(i==1)
@@ -93,7 +94,7 @@ public class ProductDao {
 	 * 
 	 */
 	public boolean dropProduct(Map map){
-		String sql = "update product_table set status = 1 where productId = ?";
+		String sql = "update product_table set stauts = 1 where productId = ?";
 		Object[] params = {
 				map.get("productId")
 		};
@@ -154,24 +155,24 @@ public class ProductDao {
 	/**
 	 * @param args
 	 */
-//	public static void main(String[] args) {
-//		// TODO Auto-generated method stub
-//		
-//		ProductDao pd = new ProductDao();
-//		Map map = new HashMap();
-//		map.put("storeId", 1);
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		ProductDao pd = new ProductDao();
+		Map map = new HashMap();
+		map.put("storeId", 2);
 		
 		//查询销量测试
-//		List ls = pd.getSaleList(map);
-//		for(int i = 0;i<ls.size();i++){
-//			HashMap<String,Object> resualtMap = (HashMap<String, Object>) ls.get(i);
-//			for (Map.Entry<String, Object> entry : resualtMap.entrySet()) {
-//				if(entry.getValue()==null)
-//					entry.setValue("");
-//				System.out.println("key= " + entry.getKey() + " and value= " + entry.getValue());
-//			}
-//			
-//		}
+		List ls = pd.getSaleList(map);
+		for(int i = 0;i<ls.size();i++){
+			HashMap<String,Object> resualtMap = (HashMap<String, Object>) ls.get(i);
+			for (Map.Entry<String, Object> entry : resualtMap.entrySet()) {
+				if(entry.getValue()==null)
+					entry.setValue("");
+				System.out.println("key= " + entry.getKey() + " and value= " + entry.getValue());
+			}
+			
+		}
 		
 		//查询店铺商品测试
 //		List ls = pd.getProductList(map);
@@ -185,6 +186,6 @@ public class ProductDao {
 //			
 //		}
 
-//	}
+	}
 
 }

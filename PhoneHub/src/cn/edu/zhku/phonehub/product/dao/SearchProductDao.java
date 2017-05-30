@@ -45,11 +45,31 @@ public class SearchProductDao {
 		}
 		else if(searchProductEntity.getSearchType().equals("品牌")){
 			sqlQuery = "Select * from search_product where brand like ?";
+			
+		}else if(searchProductEntity.getSearchType().equals("所有")){
+			sqlQuery = "Select * from search_product ";
+		}
+		else if(searchProductEntity.getSearchType().equals("价格升序")){
+			sqlQuery = "Select * from search_product ORDER BY price ";
+		}
+		else if(searchProductEntity.getSearchType().equals("价格降序")){
+			sqlQuery = "Select * from search_product ORDER BY price  DESC";
 		}
 		
-		String searchInfo = "%"+searchProductEntity.getSearchInfo()+"%";
-		ps = conn.prepareStatement(sqlQuery);
-		ps.setString(1, searchInfo);
+		if(searchProductEntity.getSearchType().equals("商品") | 
+		   searchProductEntity.getSearchType().equals("品牌") |
+		   searchProductEntity.getSearchType().equals("店铺")){
+			String searchInfo = "%"+searchProductEntity.getSearchInfo()+"%";
+			ps = conn.prepareStatement(sqlQuery);
+			ps.setString(1, searchInfo);
+		}
+		else if(searchProductEntity.getSearchType().equals("所有") |
+				searchProductEntity.getSearchType().equals("价格升序") |
+				searchProductEntity.getSearchType().equals("价格降序")
+				){
+			ps = conn.prepareStatement(sqlQuery);
+		}
+		
 		rs = ps.executeQuery();
 		
 		while(rs.next()){

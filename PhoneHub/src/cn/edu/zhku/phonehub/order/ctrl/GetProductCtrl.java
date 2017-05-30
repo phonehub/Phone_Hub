@@ -22,7 +22,12 @@ public class GetProductCtrl extends HttpServlet {
 		response.setContentType("text/html");
 
 		//获得参数
-		int orderId = (Integer) request.getSession().getAttribute("orderId");
+//		int orderId = (Integer) request.getSession().getAttribute("orderId");
+		String orderId_ = request.getParameter("orderId");
+		int orderId = 0;
+		if(orderId_!=null){
+			orderId = Integer.parseInt(orderId_);
+		}
 		
 		boolean result = false;
 		String msg = null;
@@ -30,10 +35,10 @@ public class GetProductCtrl extends HttpServlet {
 			result = GetProductService.getProductResult(orderId);
 			
 			if(result==true){
-				msg = "收货成功";
+				msg = "订单"+orderId+"收货成功";
 			}
 			else{
-				msg = "出错，收货失败";
+				msg = "订单"+orderId+"出错，收货失败";
 			}
 			
 		} catch (Exception e) {
@@ -42,7 +47,8 @@ public class GetProductCtrl extends HttpServlet {
 		}finally{
 			RequestDispatcher rd = null;
 			request.setAttribute("result_msg", msg);
-			rd = request.getRequestDispatcher("/order/GetProductResult.jsp");	//显示付款完成页面
+			rd = request.getRequestDispatcher("/servlet/ConsumerSeeOrderCtrl");
+			//rd = request.getRequestDispatcher("/order/consumerSeeOrder.jsp");	//显示付款完成页面
 			rd.forward(request, response);
 		}
 		

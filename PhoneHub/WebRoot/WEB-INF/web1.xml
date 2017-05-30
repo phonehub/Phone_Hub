@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>SearchProductCtrl</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.product.ctrl.SearchProductCtrl</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ShowProductDetailCtrl</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.product.ctrl.ShowProductDetailCtrl</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ShowOrderCtrl</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.order.ctrl.ShowOrderCtrl</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>CommitOrderCtrl</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.order.ctrl.CommitOrderCtrl</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>PayOrderCtrl</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.order.ctrl.PayOrderCtrl</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>GetProductCtrl</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.order.ctrl.GetProductCtrl</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>StoreSeeAllOrderCtrl</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.order.ctrl.StoreSeeAllOrderCtrl</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>StoreSeeOrderCtrl</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.order.ctrl.StoreSeeOrderCtrl</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>SendOrderCtrl</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.order.ctrl.SendOrderCtrl</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ModifyOrderCtrl</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.order.ctrl.ModifyOrderCtrl</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ShowShopcartCtrl</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.order.ctrl.ShowShopcartCtrl</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ConsumerSeeOrderCtrl</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.order.ctrl.ConsumerSeeOrderCtrl</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ConsumerSeeOrderDetailCtrl</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.order.ctrl.ConsumerSeeOrderDetailCtrl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowProductDetailCtrl</servlet-name>
+    <url-pattern>/servlet/ShowProductDetailCtrl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ShowOrderCtrl</servlet-name>
+    <url-pattern>/servlet/ShowOrderCtrl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CommitOrderCtrl</servlet-name>
+    <url-pattern>/servlet/CommitOrderCtrl</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>PayOrderCtrl</servlet-name>
+    <url-pattern>/servlet/PayOrderCtrl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GetProductCtrl</servlet-name>
+    <url-pattern>/servlet/GetProductCtrl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>StoreSeeOrderCtrl</servlet-name>
+    <url-pattern>/servlet/StoreSeeOrderCtrl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SearchProductCtrl</servlet-name>
+    <url-pattern>/servlet/SearchProductCtrl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SendOrderCtrl</servlet-name>
+    <url-pattern>/servlet/SendOrderCtrl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ModifyOrderCtrl</servlet-name>
+    <url-pattern>/servlet/ModifyOrderCtrl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ShowShopcartCtrl</servlet-name>
+    <url-pattern>/servlet/ShowShopcartCtrl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ConsumerSeeOrderCtrl</servlet-name>
+    <url-pattern>/servlet/ConsumerSeeOrderCtrl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ConsumerSeeOrderDetailCtrl</servlet-name>
+    <url-pattern>/servlet/ConsumerSeeOrderDetailCtrl</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Register</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.user.ctrl.RegisterCtrl</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>login</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.user.ctrl.LoginCtrl</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>userctrl</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.user.ctrl.UserCtrl</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DelCart</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.cart.ctrl.DelCart</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>addtocart</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.cart.ctrl.AddToCart</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DeCart</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.cart.ctrl.DecreaseCart</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>PlusCart</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.cart.ctrl.PlusCart</servlet-class>
+  </servlet>
+  <servlet>
+    <description></description>
+    <display-name>GetProductListCtrl</display-name>
+    <servlet-name>GetProductListCtrl</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.store.ctrl.GetProductListCtrl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetProductListCtrl</servlet-name>
+    <url-pattern>/GetProductListCtrl</url-pattern>
+  </servlet-mapping>
+ 
+  
+   <!-- start徐沛鑫    -->
+  <servlet>
+    <servlet-name>AddressCtrl</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.address.ctrl.AddressCtrl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddressCtrl</servlet-name>
+    <url-pattern>/user/AddressCtrl</url-pattern>
+  </servlet-mapping>
+   <!-- end徐沛鑫    -->
+  <servlet-mapping>
+    <servlet-name>DropProducrCtrl</servlet-name>
+    <url-pattern>/DropProducrCtrl</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>Register</servlet-name>
+    <url-pattern>/user/servlet/Register</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>login</servlet-name>
+    <url-pattern>/user/Login</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>addtocart</servlet-name>
+    <url-pattern>/cart/addtocart</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DelCart</servlet-name>
+    <url-pattern>/cart/DelCart</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DeCart</servlet-name>
+    <url-pattern>/cart/DeCart</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>PlusCart</servlet-name>
+    <url-pattern>/cart/PlusCart</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>userctrl</servlet-name>
+    <url-pattern>/user/ModifyCtrl</url-pattern>
+  </servlet-mapping>
+ 
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  <login-config>
+    <auth-method>BASIC</auth-method>
+  </login-config>
+  <servlet>
+    <description></description>
+    <display-name>SaleAccountCtrl</display-name>
+    <servlet-name>SaleAccountCtrl</servlet-name>
+    <servlet-class>cn.edu.zhku.phonehub.store.ctrl.SaleAccountCtrl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SaleAccountCtrl</servlet-name>
+    <url-pattern>/SaleAccountCtrl</url-pattern>
+  </servlet-mapping>
+</web-app>

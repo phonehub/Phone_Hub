@@ -45,8 +45,9 @@ public class ShowOrderCtrl extends HttpServlet {
 //		System.out.println("showOrderCtrl-----shopCart"+shopCart);
 		
 		//获得用户名字
-		String userName = (String) request.getSession().getAttribute("userName");
-		System.out.println("ctrl-----userName="+userName);
+		//String userName = (String) request.getSession().getAttribute("userName");
+		String userName = "peixin";
+		System.out.println("ShowOrderCrtl-----getuserName="+userName);
 		//String[]中的每个值为购物车中选中商品的id 
 		//前台要确保有选中至少一个，才可以跳转到这个Servlet
 		String[] selectedProduct =  request.getParameterValues("selectedProduct");
@@ -68,8 +69,6 @@ public class ShowOrderCtrl extends HttpServlet {
 		//获取订单预览信息
 		try {
 			showPreviewOrder = ShowOrderService.getPreviewOrderInfo(showPreviewOrderEntity);
-		
-		
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -78,17 +77,10 @@ public class ShowOrderCtrl extends HttpServlet {
 			request.setAttribute("showPreviewOrder", showPreviewOrder);
 			rd = request.getRequestDispatcher("/order/showPreviewOrder.jsp");	//显示订单预览界面
 			rd.forward(request, response);
-			
-			
 		}
-		
-		System.out.println("ctrl----最终得到的getShowPreviewOrder=");
-		for(int i=0;i<showPreviewOrder.size();i++)
-			System.out.println(showPreviewOrder.get(i).toString());
-		
-		
-		
-		
+//		System.out.println("ctrl----最终得到的getShowPreviewOrder=");
+//		for(int i=0;i<showPreviewOrder.size();i++)
+//			System.out.println(showPreviewOrder.get(i).toString());
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

@@ -20,7 +20,7 @@ public class ProductManageServer {
 		Map<String,Integer> map = new HashMap<String,Integer>();
 		
 		map.put("productId",product.getProductId());
-		map.put("count", product.getNum());
+		map.put("num", product.getNum());
 		
 		if(pd.alterNum(map))
 			return true;
@@ -33,7 +33,7 @@ public class ProductManageServer {
 	 * @param product
 	 * @return
 	 */
-	public boolean deleteProduct(Product product){
+	public boolean dropProduct(Product product){
 		Map<String,Integer> map = new HashMap<String,Integer>();
 		map.put("productId", product.getProductId());
 		if(pd.dropProduct(map))
@@ -53,12 +53,36 @@ public class ProductManageServer {
 		List list = pd.getProductList(map);
 		return list;
 	}
+	
+	/**
+	 * 查看店铺所有商品销量
+	 * @param storeId
+	 * @return
+	 */
+	public List getSaleList(int storeId){
+		Map<String,Integer> map = new HashMap();
+		map.put("storeId", storeId);
+		List list = pd.getSaleList(map);
+		return list;
+	}
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		
+		ProductManageServer ps = new ProductManageServer();
+		List ls = ps.getProductList(1);
+		for(int i = 0;i<ls.size();i++){
+			HashMap<String,Object> resualtMap = (HashMap<String, Object>) ls.get(i);
+			for (Map.Entry<String, Object> entry : resualtMap.entrySet()) {
+				if(entry.getValue()==null)
+					entry.setValue("");
+				System.out.println("key= " + entry.getKey() + " and value= " + entry.getValue());
+			}
+			
+		}
 
 	}
 

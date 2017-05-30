@@ -28,7 +28,7 @@ public class StoreManageServer {
 	 */
 	public Map getApplyDetail(Store store){
 		Map map = new HashMap();
-		map.put("storeId", store.getStoreId());
+		map.put("userId", store.getUserId());
 		return sd.getApplyDetail(map);
 	}
 	
@@ -89,7 +89,16 @@ public class StoreManageServer {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		
+		StoreManageServer sm = new StoreManageServer();
+		Store store = new Store();
+		store.setStoreId(4);
+		if(sm.passApply(store)){
+			System.out.println("----"+true);
+		}
+		else{
+			System.out.println("----"+false);
+		}
 	}
 
 }
