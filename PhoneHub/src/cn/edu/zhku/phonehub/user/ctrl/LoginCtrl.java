@@ -3,14 +3,13 @@ package cn.edu.zhku.phonehub.user.ctrl;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import cn.edu.zhku.phonehub.cart.model.Cart;
+import net.sf.json.JSONObject;
 import cn.edu.zhku.phonehub.cart.service.CartService;
 import cn.edu.zhku.phonehub.user.model.User;
 import cn.edu.zhku.phonehub.user.services.LoginServices;
@@ -23,6 +22,7 @@ public class LoginCtrl extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("111");
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html");
@@ -34,7 +34,7 @@ public class LoginCtrl extends HttpServlet {
 		loginuser.setUserName(userName);
 		loginuser.setPassWord(userPassword);
 		String msg = null;
-
+		JSONObject resultJson = new JSONObject();
 		try {
 			user = ls.checkUserNameAndPassword(loginuser); //
 			if (user != null) {
@@ -48,10 +48,19 @@ public class LoginCtrl extends HttpServlet {
 				session.setAttribute("px_cart",
 						cartservice.showCart(user.getUserId()));
 
-				Cart cart = (Cart) session.getAttribute("px_cart");
+				resultJson.put("flag", "true");
+
+				out.println(resultJson);
+				out.flush();
+				out.close();
 
 			} else {
+				resultJson.put("flag", "false");
 				msg = "登录失败";
+				out.println(resultJson);
+
+				out.flush();
+				out.close();
 
 			}
 		} catch (Exception e) {
@@ -61,12 +70,6 @@ public class LoginCtrl extends HttpServlet {
 			if (msg == null) {
 				msg = "数据库异常";
 			}
-
-			RequestDispatcher rd = null;
-			request.setAttribute("MSG", msg);
-			out.println(msg);
-			rd = request.getRequestDispatcher("/user/result.jsp");
-			rd.forward(request, response);
 
 		}
 

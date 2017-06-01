@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.sf.json.JSONObject;
 import cn.edu.zhku.phonehub.address.model.Address;
 import cn.edu.zhku.phonehub.address.service.AddressService;
 import cn.edu.zhku.phonehub.user.model.User;
@@ -32,6 +33,8 @@ public class RegisterCtrl extends HttpServlet {
 		user.setUserName(userName);
 		user.setPassWord(userPassword);
 		String msg = null;
+		JSONObject resultJson = new JSONObject();
+
 		try {
 
 			if (reg.Insert(user) == true) {
@@ -53,11 +56,25 @@ public class RegisterCtrl extends HttpServlet {
 				address.setIfdefault(1);
 				address.setUserId(user.getUserId());
 				addressService.add(address);
+				resultJson.put("flag", "true");
+				out.println(resultJson);
+				out.flush();
+				out.close();
+				// response.sendRedirect("../login.html");
+
+				return;
 
 			} else {
+
 				msg = "很遗憾，注册失败了，再试一次？";
 				out.println(msg);
-
+				resultJson.put("flag", "false");
+				out.println(resultJson);
+				out.flush();
+				out.close();
+				// response.setHeader("Refresh",
+				// "3;url=/PhoneHub/user/register.html");
+				return;
 			}
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
