@@ -96,7 +96,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</ul>
 						<ul class="message-r">
 							<div class="topMessage home">
-								<div class="menu-hd"><a href="#" target="_top" class="h">商城首页</a></div>
+								<div class="menu-hd"><a href="./index.jsp" target="_top" class="h">商城首页</a></div>
 							</div>
 							<div class="topMessage my-shangcheng">
 								<div class="menu-hd MyShangcheng"><a href="./servlet/ConsumerSeeOrderCtrl" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
@@ -221,7 +221,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<li class="td td-item">
 																<div class="item-pic">
 																	<a href="#" class="J_MakePoint">
-																		<img src="./images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
+																		<img src="/PhoneHub/Image/<%=consumerSeeOrderList.get(i).getImage1()%>" width="80ps" height="80ps" class="itempic J_ItemImg">
 																	</a>
 																</div>
 																<div class="item-info">
@@ -349,40 +349,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				<!--底部-->
 				<div class="footer">
-					<div class="footer-hd">
-						<p>
-							<a href="#">恒望科技</a>
-							<b>|</b>
-							<a href="#">商城首页</a>
-							<b>|</b>
-							<a href="#">支付宝</a>
-							<b>|</b>
-							<a href="#">物流</a>
+					<div>
+						<p align="center">
+							Copyright &copy; 2017.PhoneHub Technology.
 						</p>
 					</div>
-					<div class="footer-bd">
-						<p>
-							<a href="#">关于恒望</a>
-							<a href="#">合作伙伴</a>
-							<a href="#">联系我们</a>
-							<a href="#">网站地图</a>
-							<em>© 2015-2025 Hengwang.com 版权所有. 更多模板 <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></em>
-						</p>
-					</div>
-
 				</div>
 			</div>
 			<aside class="menu">
 				<ul>
 					<li class="person active">
-						<a href="index.html"><i class="am-icon-user"></i>个人中心</a>
+						<a href=""><i class="am-icon-user"></i>个人中心</a>
 					</li>
 					<li class="person">
 						<p><i class="am-icon-newspaper-o"></i>个人资料</p>
 						<ul>
-							<li> <a href="information.html">个人信息</a></li>
-							<li> <a href="safety.html">安全设置</a></li>
-							<li> <a href="address.html">地址管理</a></li>
+							<li> <a href="./user/information.jsp">个人信息</a></li>
+							<li> <a href="./user/password.jsp">修改帐号密码</a></li>
+							<li> <a href="./user/modify.jsp">修改支付密码</a></li>
+							<li> <a href="./user/address.jsp">地址管理</a></li>
 						</ul>
 					</li>
 					<li class="person">
@@ -391,12 +376,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<li><a href="./servlet/ConsumerSeeOrderCtrl">订单管理</a></li>
 						</ul>
 					</li>
+					<% 
+					int power = -1;
+		             Integer inter = (Integer) session.getAttribute("power");
+		            power = inter.intValue();
+		            if(power<3){
+		            
+					%>
 					<li class="person">
-						<p><i class="am-icon-dollar"></i>我的资产</p>
+						<p><i class="am-icon-balance-scale"></i>我的店铺</p>
 						<ul>
-							<li> <a href="walletlist.html">账户余额</a></li>
+							<li><a href="/PhoneHub/storeManage/myStore.jsp">店铺管理</a></li>
+							
 						</ul>
 					</li>
+					<%
+					}
+					else{
+						
+					 %>
+					 <li class="person">
+						<p><i class="am-icon-balance-scale"></i>我的店铺</p>
+						<ul>
+							<li><a href="/PhoneHub/storeManage/createStore.jsp" target="page">创建店铺</a></li>
+							
+						</ul>
+					</li>
+					
+					<%
+					}
+					 %>
 				</ul>
 			</aside>
 		</div>

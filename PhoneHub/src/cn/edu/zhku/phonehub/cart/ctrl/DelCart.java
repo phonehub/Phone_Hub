@@ -46,7 +46,9 @@ public class DelCart extends HttpServlet {
 		// int num = Integer.parseInt((String) request.getParameter("num"));
 		CartItem ci = new CartItem();
 		HttpSession session = request.getSession();
-		int userId = Integer.parseInt((String) session.getAttribute("userId"));
+		
+		int userId = (Integer)session.getAttribute("userId");
+		
 		response.setContentType("text/html;charset=utf-8");
 		ShowProductDetailDao dao = new ShowProductDetailDao();
 		CartService cs = new CartService();
@@ -93,7 +95,7 @@ public class DelCart extends HttpServlet {
 			e.printStackTrace();
 		} finally {
 			RequestDispatcher rd = null;
-			rd = request.getRequestDispatcher("/cart/cart.jsp");
+			rd = request.getRequestDispatcher("/cart/showcart.jsp");
 			rd.forward(request, response);
 		}
 

@@ -52,7 +52,7 @@ public class ShowShopcartCtrl extends HttpServlet {
 			RequestDispatcher rd = null;
 			request.setAttribute("shopcartList", shopcartList);
 			request.setAttribute("msg", msg);
-			rd = request.getRequestDispatcher("/order/shopcartCommit.jsp");	//显示订单预览界面
+			rd = request.getRequestDispatcher("/cart/showcart.jsp");	//显示订单预览界面
 			rd.forward(request, response);
 		}
 		

@@ -71,7 +71,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</ul>
 			<ul class="message-r">
 				<div class="topMessage home">
-					<div class="menu-hd"><a href="#" target="_top" class="h">商城首页</a></div>
+					<div class="menu-hd"><a href="./index.jsp" target="_top" class="h">商城首页</a></div>
 				</div>
 				<div class="topMessage my-shangcheng">
 					<div class="menu-hd MyShangcheng"><a href="./servlet/ConsumerSeeOrderCtrl" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
@@ -279,9 +279,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<%
 							}
 						}
-					%>  			
+					%>  	
+					
+			<!-- 留言 -->		
+			<!-- 			
   				<div class="pay-total">
-						<!--留言-->
 							<div class="order-extra">
 								<div class="order-user-info">
 									<div id="holyshit257" class="memo">
@@ -295,7 +297,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</div>
   					<div class="clear"></div>
 				</div>
-				
+			-->
 				<!--信息 -->
 							<div class="order-go clearfix">
 								<div class="pay-confirm clearfix">

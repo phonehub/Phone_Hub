@@ -90,7 +90,7 @@ public class ModifyOrderCtrl extends HttpServlet {
 			RequestDispatcher rd = null;
 			request.setAttribute("msg", msg);
 			System.out.println("msg="+msg);
-			rd = request.getRequestDispatcher("/order/ModifyOrder.jsp");	
+			rd = request.getRequestDispatcher("/order/SearchStoreSeeOrder.jsp");	
 			rd.forward(request, response);
 		}
 		

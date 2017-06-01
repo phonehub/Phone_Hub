@@ -55,7 +55,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</ul>
 			<ul class="message-r">
 				<div class="topMessage home">
-					<div class="menu-hd"><a href="#" target="_top" class="h">商城首页</a></div>
+					<div class="menu-hd"><a href="./index.jsp" target="_top" class="h">商城首页</a></div>
 				</div>
 				<div class="topMessage my-shangcheng">
 					<div class="menu-hd MyShangcheng"><a href="./servlet/ConsumerSeeOrderCtrl" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
@@ -82,23 +82,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<table align="center" border="1">
 							<tr>
 								<td>
-									<select size="1" name="searchType">
-										<option value="品牌">
-											品牌
-										</option>
-										<option value="商品" selected>
-											商品
-										</option>
-										<option value="店铺">
-											店铺
-										</option>
-									</select>
+									<div style="block-size:40px;">
+										<select class="am-form-content address"  name="searchType">
+											<option value="品牌">
+												品牌
+											</option>
+											<option value="商品" selected>
+												商品
+											</option>
+											<option value="店铺">
+												店铺
+											</option>
+										</select>
+									</div>
 								</td>
 								<td>
-									<input type="text" name="searchInfo" placeholder="搜索" value="">
-								</td>
-								<td>
-									<input type="submit" value="查找">
+									<div>
+										<input type="text" name="searchInfo" placeholder="搜索" value="">
+										<!-- 
+										<div class="am-form am-form-horizontal">
+											<input type="text"  name="searchInfo" id="user-old-password" placeholder="输入查询信息" name="oldpassWord">
+										</div>
+										 -->
+									</div>
+									</td>
+								<td>	
+									<div>
+										<input type="submit" value="查找">
+									</div>
 								</td>
 							</tr>
 						</table>
@@ -153,7 +164,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									
 									<li>
 										<div class="i-pic limit" >
-											<img src="./images/imgsearch1.jpg" onclick="detail(<%=productList.get(i).getProductId()%>)"/>											
+											<img src="/PhoneHub/Image/<%=productList.get(i).getImage1()%>" onclick="detail(<%=productList.get(i).getProductId()%>)"/>											
 											<p class="title fl">【<%=productList.get(i).getStoreName()%>】<%=productList.get(i).getProductName() %></p>
 											<p class="price fl">
 												<b>¥</b>
@@ -191,6 +202,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</div>
 							<div class="clear"></div>
 							<!--分页 -->
+						<!--  
 							<ul class="am-pagination am-pagination-right">
 								<li class="am-disabled"><a href="#">&laquo;</a></li>
 								<li class="am-active"><a href="#">1</a></li>
@@ -200,28 +212,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<li><a href="#">5</a></li>
 								<li><a href="#">&raquo;</a></li>
 							</ul>
-
+						-->
 						</div>
 					</div>
+					<!--底部-->
 					<div class="footer">
-						<div class="footer-hd">
-							<p>
-								<a href="#">恒望科技</a>
-								<b>|</b>
-								<a href="#">商城首页</a>
-								<b>|</b>
-								<a href="#">支付宝</a>
-								<b>|</b>
-								<a href="#">物流</a>
-							</p>
-						</div>
-						<div class="footer-bd">
-							<p>
-								<a href="#">关于恒望</a>
-								<a href="#">合作伙伴</a>
-								<a href="#">联系我们</a>
-								<a href="#">网站地图</a>
-								<em>© 2015-2025 Hengwang.com 版权所有. 更多模板 <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></em>
+						<div>
+							<p align="center">
+								Copyright &copy; 2017.PhoneHub Technology.
 							</p>
 						</div>
 					</div>
@@ -237,64 +235,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<li><a href="../person/index.html"><i class="am-icon-user"></i>我的</a></li>					
 		</div>
 
-		<!--菜单 -->
-		<div class=tip>
-			<div id="sidebar">
-				<div id="wrap">
-					<div id="prof" class="item">
-						<a href="#">
-							<span class="setting"></span>
-						</a>
-						<div class="ibar_login_box status_login">
-							<div class="avatar_box">
-								<p class="avatar_imgbox"><img src="./images/no-img_mid_.jpg" /></p>
-								<ul class="user_info">
-									<li>用户名：sl1903</li>
-									<li>级&nbsp;别：普通会员</li>
-								</ul>
-							</div>
-							<i class="icon_arrow_white"></i>
-						</div>
-
-					</div>
-					<div id="shopCart" class="item">
-						<a href="#">
-							<span class="message"></span>
-						</a>
-						<p>
-							购物车
-						</p>
-						<p class="cart_num"></p>
-					</div>
-					<div id="asset" class="item">
-						<a href="#">
-							<span class="view"></span>
-						</a>
-					</div>
-
-				</div>
-
-			</div>
-			<div id="prof-content" class="nav-content">
-				<div class="nav-con-close">
-					<i class="am-icon-angle-right am-icon-fw"></i>
-				</div>
-				<div>
-					我
-				</div>
-			</div>
-			<div id="shopCart-content" class="nav-content">
-				<div class="nav-con-close">
-					<i class="am-icon-angle-right am-icon-fw"></i>
-				</div>
-				<div>
-					购物车
-				</div>
-			</div>
-			
-		</div>
 		
-<div class="theme-popover-mask"></div>
 
   </body>
 </html>

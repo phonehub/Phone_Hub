@@ -87,7 +87,7 @@
 				<!-- menu list -->
 				<ul class="nav navbar-nav navbar-right">
 					<li>
-						<a href="#screenshots-section" class="smoothScroll">商城首页</a>
+						<a href="" class="smoothScroll">商城首页</a>
 					</li>
 					<li>
 						<a href="../PhoneHub/user/register.html" class="smoothScroll">注册</a>
@@ -96,7 +96,7 @@
 						<a href="../PhoneHub/user/login.html" class="smoothScroll hidden-sm">登录</a>
 					</li>
 					<li>
-						<a href="#subscribe-section" class="smoothScroll">购物车</a>
+						<a href="./cart/showcart.jsp" class="smoothScroll">购物车</a>
 					</li>
 				</ul>
 			</div>
@@ -105,13 +105,21 @@
 		<!-- /.container-fluid -->
 		</nav>
 		</header>
-		<!-- / END HEADER SECTION -->
+		<!-- / END HEADER SECTION --> 
 <script>
 	function keyup_submit(e) {
-		var evt = window.event || e;
-		if (evt.keyCode == 13) {
-			alert("success");
+		var event = arguments.callee.caller.arguments[0] || window.event;
+		if(event.keyCode == 13){
+			document.getElementById("search_bt").click();
 		}
+	}
+</script>
+
+<script type="text/javascript">
+	function search_onclick(){
+		var searchInfo = document.getElementById("email").value;
+		alert("searchInfo="+searchInfo);
+		window.location.href="./servlet/SearchProductCtrl?searchType=商品&searchInfo="+searchInfo;
 	}
 </script>
 		<!-- START BANNER SECTION -->
@@ -133,10 +141,9 @@
 							我们----专注手机两星期
 						</p>
 						</br>
-						<form>
-							<input type="text" id="email" placeholder="Write your email here"
-								onkeydown=keyup_submit(); />
-						</form>
+						<input type="text" id="email" placeholder="商品名称"
+							onkeydown=keyup_submit(); />
+						<input type="button" id="search_bt" onclick="search_onclick()">
 					</div>
 				</div>
 				<div class="col-lg-2 col-sm-0"></div>
@@ -152,7 +159,7 @@
 						<div class="footer-cont">
 							<p>
 								Copyright &copy; 2017.Company name All rights reserved.
-								<a target="_blank" href="http://www.moke8.com/html/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>
+								<a target="_blank" href="">什么玩意</a>
 							</p>
 						</div>
 					</div>

@@ -58,7 +58,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</ul>
 			<ul class="message-r">
 				<div class="topMessage home">
-					<div class="menu-hd"><a href="#" target="_top" class="h">商城首页</a></div>
+					<div class="menu-hd"><a href="./index.jsp" target="_top" class="h">商城首页</a></div>
 				</div>
 				<div class="topMessage my-shangcheng">
 					<div class="menu-hd MyShangcheng"><a href="./servlet/ConsumerSeeOrderCtrl" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
@@ -118,13 +118,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="flexslider">
 							<ul class="slides">
 								<li>
-									<img src="./images/01.jpg" title="pic" />
+									<img src="/PhoneHub/Image/<%=productDetail.getImage1()%>" title="pic" />
 								</li>
 								<li>
-									<img src="./images/02.jpg" />
+									<img src="/PhoneHub/Image/<%=productDetail.getImage2()%>" />
 								</li>
 								<li>
-									<img src="./images/03.jpg" />
+									<img src="/PhoneHub/Image/<%=productDetail.getImage3()%>" />
 								</li>
 							</ul>
 						</div>
@@ -143,27 +143,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										$(this).parents("li").addClass("tb-selected").siblings().removeClass("tb-selected");
 										$(".jqzoom").attr('src', $(this).find("img").attr("mid"));
 										$(".jqzoom").attr('rel', $(this).find("img").attr("big"));
-									});
+				 					});
 								});
-							</script>
+							</script> 
 
 							<div class="tb-booth tb-pic tb-s310">
-								<a href="./images/01.jpg"><img src="./images/01_mid.jpg" alt="细节展示放大镜特效" rel="./images/01.jpg" class="jqzoom" /></a>
+								<a href=""><img src="/PhoneHub/Image/<%=productDetail.getImage1()%>" alt="细节展示放大镜特效" rel="/PhoneHub/Image/<%=productDetail.getImage1()%>" class="jqzoom" /></a>
 							</div>
 							<ul class="tb-thumb" id="thumblist">
 								<li class="tb-selected">
 									<div class="tb-pic tb-s40">
-										<a ><img src="./images/01_small.jpg" mid="./images/01_mid.jpg" big="./images/01.jpg"></a>
+										<a ><img src="/PhoneHub/Image/<%=productDetail.getImage1()%>" mid="/PhoneHub/Image/<%=productDetail.getImage1()%>" big="/PhoneHub/Image/<%=productDetail.getImage1()%>"></a>
 									</div>
 								</li>
 								<li>
 									<div class="tb-pic tb-s40">
-										<a><img src="./images/02_small.jpg" mid="./images/02_mid.jpg" big="./images/02.jpg"></a>
+										<a><img src="/PhoneHub/Image/<%=productDetail.getImage2()%>" mid="/PhoneHub/Image/<%=productDetail.getImage2()%>" big="/PhoneHub/Image/<%=productDetail.getImage2()%>"></a>
 									</div>
 								</li>
 								<li>
 									<div class="tb-pic tb-s40">
-										<a><img src="./images/03_small.jpg" mid="./images/03_mid.jpg" big="./images/03.jpg"></a>
+										<a><img src="/PhoneHub/Image/<%=productDetail.getImage3()%>" mid="/PhoneHub/Image/<%=productDetail.getImage3()%>" big="/PhoneHub/Image/<%=productDetail.getImage3()%>"></a>
 									</div>
 								</li>
 							</ul>
@@ -262,14 +262,44 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="clear"></div>
 						<br>
 		  	 			<div class="pay">
-							<li>
+		  	 			<!-- 
+		  	 				<li>
 								<div class="clearfix tb-btn tb-btn-buy theme-login">
 									<a id="LikBuy" title="点此按钮到下一步确认购买信息" href="#">立即购买</a>
 								</div>
 							</li>
+		  	 			 -->
 							<li>
+								<script type="text/javascript">
+									function addToCart(productId){
+										var add_bt = document.getElementById("add_bt");
+										var add_form = document.getElementById("add_form");
+										var addNum = document.getElementById("text_box").value;
+										alert("addNum="+addNum);
+										alert("productId="+productId);
+										   $.ajax({  
+								               type:"get",//请求方式  
+								               url:"./cart/addtocart?num="+addNum+"&productId="+productId,//发送请求地址  
+								               timeout:30000,//超时时间：30秒  
+								             //  dataType:"json",//设置返回数据的格式  
+								               //请求成功后的回调函数 data为json格式  
+								               success:function(){  
+								                  alert("添加成功");
+								                  
+								              },  
+								              //请求出错的处理  
+								              error:function(){  
+								                  alert("请求出错");  
+								              }  
+								           }); 
+									}
+								</script>
 								<div class="clearfix tb-btn tb-btn-basket theme-login">
-									<a id="LikBasket" title="加入购物车" href="#"><i></i>加入购物车</a>
+									<form id="add_form" action="">
+										<a id="LikBasket" title="加入购物车" onclick="addToCart(<%=productDetail.getProductId()%>)"><i></i>加入购物车</a>
+										<input type="submit" id="add_bt" style="display: none;" >
+									</form>
+									
 								</div>
 							</li>
 						</div>
@@ -353,9 +383,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 											<h4>商品细节</h4>
 										</div>
 										<div class="twlistNews">
-											<img src="./images/tw1.jpg" />
-											<img src="./images/tw2.jpg" />
-											<img src="./images/tw3.jpg" />
+											<img src="/PhoneHub/Image/<%=productDetail.getImage1()%>" />
+											<img src="/PhoneHub/Image/<%=productDetail.getImage2()%>" />
+											<img src="/PhoneHub/Image/<%=productDetail.getImage3()%>" />
 										</div>
 									</div>
 									<div class="clear"></div>
@@ -363,93 +393,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</div>
 
 					<div class="clear"></div>
+						<!--底部-->
 						<div class="footer">
-							<div class="footer-hd">
-								<p>
-									<a href="#">恒望科技</a>
-									<b>|</b>
-									<a href="#">商城首页</a>
-									<b>|</b>
-									<a href="#">支付宝</a>
-									<b>|</b>
-									<a href="#">物流</a>
-								</p>
-							</div>
-							<div class="footer-bd">
-								<p>
-									<a href="#">关于恒望</a>
-									<a href="#">合作伙伴</a>
-									<a href="#">联系我们</a>
-									<a href="#">网站地图</a>
-									<em>© 2015-2025 Hengwang.com 版权所有. 更多模板 <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></em>
+							<div>
+								<p align="center">
+									Copyright &copy; 2017.PhoneHub Technology.
 								</p>
 							</div>
 						</div>
-					</div>
-				</div>
-			</div>
-  	 			<!--菜单 -->
-			<div class=tip>
-				<div id="sidebar">
-					<div id="wrap">
-						<div id="prof" class="item">
-							<a href="#">
-								<span class="setting"></span>
-							</a>
-							<div class="ibar_login_box status_login">
-								<div class="avatar_box">
-									<p class="avatar_imgbox"><img src="./images/no-img_mid_.jpg" /></p>
-									<ul class="user_info">
-										<li>用户名：sl1903</li>
-										<li>级&nbsp;别：普通会员</li>
-									</ul>
-								</div>
-								<div class="login_btnbox">
-									<a href="#" class="login_order">我的订单</a>
-								</div>
-								<i class="icon_arrow_white"></i>
-							</div>
-
-						</div>
-						<div id="shopCart" class="item">
-							<a href="./servlet/ShowShopcartCtrl">
-								<span class="message"></span>
-							</a>
-							<p>
-								购物车
-							</p>
-							<p class="cart_num">0</p>
-						</div>
-						<div id="asset" class="item">
-							<a href="#">
-								<span class="view"></span>
-							</a>
-							<div class="mp_tooltip">
-								我的资产
-								<i class="icon_arrow_right_black"></i>
-							</div>
-						</div>
-
-						<!--回到顶部 -->
-						<div id="quick_links_pop" class="quick_links_pop hide"></div>
-
-					</div>
-
-				</div>
-				<div id="prof-content" class="nav-content">
-					<div class="nav-con-close">
-						<i class="am-icon-angle-right am-icon-fw"></i>
-					</div>
-					<div>
-						我
-					</div>
-				</div>
-				<div id="shopCart-content" class="nav-content">
-					<div class="nav-con-close">
-						<i class="am-icon-angle-right am-icon-fw"></i>
-					</div>
-					<div>
-						购物车
 					</div>
 				</div>
 			</div>

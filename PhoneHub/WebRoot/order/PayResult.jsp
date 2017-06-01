@@ -72,7 +72,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	     </div></div>
 	  </ul>
 	  <ul class="message-r">
-	    <div class="topMessage home"><div class="menu-hd"><a href="#" target="_top" class="h">商城首页</a></div></div>
+	    <div class="topMessage home"><div class="menu-hd"><a href="./index.jsp" target="_top" class="h">商城首页</a></div></div>
 	    <div class="topMessage my-shangcheng"><div class="menu-hd MyShangcheng"><a href="./servlet/ConsumerSeeOrderCtrl" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div></div>
 	    <div class="topMessage mini-cart"><div class="menu-hd"><a id="mc-menu-hd" href="./servlet/ShowShopcartCtrl" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">0</strong></a></div></div>
 	  </ul>
@@ -129,32 +129,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    </div>
 	  </div>
 	</div>
-		<div class="footer">
-			<div class="footer-hd">
-				<p>
-					<a href="#">恒望科技</a>
-					<b>|</b>
-					<a href="#">商城首页</a>
-					<b>|</b>
-					<a href="#">支付宝</a>
-					<b>|</b>
-					<a href="#">物流</a>
-				</p>
-			</div>
-			<div class="footer-bd">
-				<p>
-					<a href="#">关于恒望</a>
-					<a href="#">合作伙伴</a>
-					<a href="#">联系我们</a>
-					<a href="#">网站地图</a>
-					<em>© 2015-2025 Hengwang.com 版权所有. 更多模板 <a
-						href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a>
-						- Collect from <a href="http://www.cssmoban.com/" title="网页模板"
-						target="_blank">网页模板</a>
-					</em>
-				</p>
-			</div>
-		</div>
+	
+				<!--底部-->
+				<div class="footer">
+					<div>
+						<p align="center">
+							Copyright &copy; 2017.PhoneHub Technology.
+						</p>
+					</div>
+				</div>
 
   </body>
 </html>

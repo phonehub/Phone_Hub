@@ -58,30 +58,49 @@
   	 			var id_message;
   	 			
   	 			id_name = document.getElementById("id_name"+index+orderId).value;
-  	 			alert("id_name="+id_name);
+//  	 			alert("id_name="+id_name);
   	 			
 	  	 		id_phone = document.getElementById("id_phone"+index+orderId).value;
-	  	 		alert("id_phone="+id_phone);
+//	  	 		alert("id_phone="+id_phone);
 	  	 		
 	  	 		id_province = document.getElementById("id_province"+index+orderId).value;
-	  	 		alert("id_province="+id_province);
+//	  	 		alert("id_province="+id_province);
 	  	 		
 	  	 		id_city = document.getElementById("id_city"+index+orderId).value;
-	  	 		alert("id_city="+id_city);
+//	  	 		alert("id_city="+id_city);
 	  	 		
 	  	 		id_detailAddress = document.getElementById("id_detailAddress"+index+orderId).value;
-	  	 		alert("id_detailAddress="+index+id_detailAddress);
+//	  	 		alert("id_detailAddress="+index+id_detailAddress);
 	  	 		
 	  	 		id_amount = document.getElementById("id_amount"+index+orderId).value;
-	  	 		alert("id_amount="+id_amount);
+//	  	 		alert("id_amount="+id_amount);
 	  	 		
 	  	 		id_message = document.getElementById("id_message"+index+orderId).value;
-	  	 		alert("id_message="+id_message);
+//	  	 		alert("id_message="+id_message);
 	  	 		
-  	 			alert("orderId="+orderId+"id_name="+id_name+"///"+"id_phone"+id_phone+"///"+"id_province"+id_province+"///"+"id_city"+id_city+"///"+"id_detailAddress"+id_detailAddress+"///"+"id_amount"+id_amount+"///"+"id_message"+id_message);
-  	 			window.location.href="./servlet/ModifyOrderCtrl?orderId="+orderId+"&province="+id_province+"&city="+id_city+"&detailAddress="+id_detailAddress+"&phone="+id_phone+"&name="+id_name+"&amount="+id_amount+"&message="+id_message;
+//  	 			alert("orderId="+orderId+"id_name="+id_name+"///"+"id_phone"+id_phone+"///"+"id_province"+id_province+"///"+"id_city"+id_city+"///"+"id_detailAddress"+id_detailAddress+"///"+"id_amount"+id_amount+"///"+"id_message"+id_message);
+  	 			
+  	 			$.ajax({  
+					type:"get",//请求方式  
+					url:"./servlet/ModifyOrderCtrl?sendOrder_orderId="+orderId+"&province="+id_province+"&city="+id_city+"&detailAddress="+id_detailAddress+"&phone="+id_phone+"&name="+id_name+"&amount="+id_amount+"&message="+id_message,//发送请求地址  
+					timeout:30000,//超时时间：30秒  
+					//  dataType:"json",//设置返回数据的格式  
+					//请求成功后的回调函数 data为json格式  
+					success:function(){  
+						alert("订单编号"+orderId+"修改成功");
+						},  
+						//请求出错的处理  
+						error:function(){  
+						alert("请求出错");  
+					}
+				}); 
+  	 			
+  	 			//window.location.href="./servlet/ModifyOrderCtrl?orderId="+orderId+"&province="+id_province+"&city="+id_city+"&detailAddress="+id_detailAddress+"&phone="+id_phone+"&name="+id_name+"&amount="+id_amount+"&message="+id_message;
 			}  	 					 	
   	 </script>
+  	 
+  	 
+  	 
 
 	<%
 		//ArrayList<StoreSeeOrderDao> storeSeeOrderList = (ArrayList<StoreSeeOrderDao>)request.getAttribute("storeSeeOrderList");
@@ -128,45 +147,8 @@
 		<header>
 		<article>
 		<div class="mt-logo">
-			<!--顶部导航条 -->
-			<div class="am-container header">
-				<ul class="message-l">
-					<div class="topMessage">
-						<div class="menu-hd">
-							<a href="#" target="_top" class="h">亲，请登录</a>
-							<a href="#" target="_top">免费注册</a>
-						</div>
-					</div>
-				</ul>
-				<ul class="message-r">
-					<div class="topMessage home">
-						<div class="menu-hd">
-							<a href="#" target="_top" class="h">商城首页</a>
-						</div>
-					</div>
-					<div class="topMessage my-shangcheng">
-						<div class="menu-hd MyShangcheng">
-							<a href="./servlet/ConsumerSeeOrderCtrl" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a>
-						</div>
-					</div>
-					<div class="topMessage mini-cart">
-						<div class="menu-hd">
-							<a id="mc-menu-hd" href="./servlet/ShowShopcartCtrl" target="_top"><i
-								class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong
-								id="J_MiniCartNum" class="h">0</strong> </a>
-						</div>
-					</div>
-				</ul>
-			</div>
-
 			<!--悬浮搜索框-->
 			<div class="nav white">
-				<div class="logoBig">
-					<li>
-						<img src="../images/logobig.png" />
-					</li>
-				</div>
-
 				<table align="center">
 					<tr>
 						<td>
@@ -263,7 +245,7 @@
 												<div class="order-title">
 													<div class="dd-num">
 														订单编号：<%=storeSeeOrderList.get(i).getOrderId()%></div>
-													<span> 状态：<%=status_%> </span>
+														<p id="status<%=storeSeeOrderList.get(i).getOrderId() %>"><span>状态：<%=status_%> </span></p>
 												</div>
 												<div class="order-title">
 													<div class="dd-num">
@@ -352,8 +334,8 @@
 															<li class="td td-item">
 																<div class="item-pic">
 																	<a href="#" class="J_MakePoint"> <!-- 商品图片 --> <img
-																			src="./images/kouhong.jpg_80x80.jpg"
-																			class="itempic J_ItemImg"> </a>
+																			src="/PhoneHub/Image/<%=storeSeeOrderList.get(i).getImage1()%>"
+																			class="itempic J_ItemImg"> </a> 
 																</div>
 																<div class="item-info">
 																	<div class="item-basic-info">
@@ -394,21 +376,54 @@
 
 																</div>
 															</li>
+												<script type="text/javascript">
+													function send(orderId){
+														$.ajax({  
+															type:"get",//请求方式  
+															url:"./servlet/SendOrderCtrl?sendOrder_orderId="+orderId,//发送请求地址  
+															timeout:30000,//超时时间：30秒  
+															//  dataType:"json",//设置返回数据的格式  
+															//请求成功后的回调函数 data为json格式  
+															success:function(){  
+																//改变button的显示效果
+																var send_list = document.getElementsByName("send_bt"+orderId);
+																for(var i=0; i<send_list.length; i++){
+																	var objTemp = send_list[i];
+																	objTemp.disabled="true";
+																}
+																//改变显示订单状态（只能改变一个）
+																document.getElementById("status"+orderId).innerHTML="状态：已付款已发货";
+																//send_bt.disabled="true";
+																alert("订单编号"+orderId+"发货成功");
+															},  
+															//请求出错的处理  
+															error:function(){  
+															alert("请求出错");  
+															}
+														}); 
+													}
+												</script>
 															<div class="move-right">
 																<li class="td td-status">
 																	<div class="item-status">
 																		<!-- <p class="Mystatus"><%=status_%></p> -->
-																		<div class="am-btn am-btn-danger anniu">
+																		<!-- <div class="am-btn am-btn-danger anniu"> -->
+																		<div class="move-right">
 																			<%
 																				if (status_.equals("已付款未发货")) {
 																			%>
-																			<a
+																			<!-- 
+																			<a  id="send_bt<%=storeSeeOrderList.get(i).getOrderId() %>"
+																				onclick="send(<%=storeSeeOrderList.get(i).getOrderId() %>)">
 																				href="./servlet/SendOrderCtrl?sendOrder_orderId=<%=storeSeeOrderList.get(i).getOrderId()%>">
 																				发货 </a>
+																			-->
+																				<input value="发货" type="button" name="send_bt<%=storeSeeOrderList.get(i).getOrderId()%>" class="am-btn am-btn-danger anniu" onclick="send(<%=storeSeeOrderList.get(i).getOrderId()%>)" >
 																			<%
 																				} else {
 																			%>
-																			<a style="cursor: default;"> 发货 </a>
+																			<!-- <a id="send_id<%=storeSeeOrderList.get(i).getOrderId() %>" style="cursor: default;"> 发货 </a> -->
+																				<input value="发货" disabled="disabled" type="button" name="send_bt<%=storeSeeOrderList.get(i).getOrderId()%>" class="am-btn am-btn-danger anniu">
 																			<%
 																				}
 																			%>
@@ -416,11 +431,6 @@
 																	</div>
 																</li>
 																<li class="td td-change">
-																	<!-- 
-																	<div class="am-btn am-btn-danger anniu" onclick="onHref(1,<%=storeSeeOrderList.get(i).getOrderId()%>)">
-																		修改
-																	</div>	
-																	 -->
 																	<div class="am-btn am-btn-danger anniu"
 																		onclick="onHref(1,<%=storeSeeOrderList.get(i).getOrderId()%>)">
 																		修改
@@ -567,7 +577,7 @@
 															<li class="td td-item">
 																<div class="item-pic">
 																	<a href="#" class="J_MakePoint"> <!-- 商品图片 --> <img
-																			src="./images/kouhong.jpg_80x80.jpg"
+																			src="/PhoneHub/Image/<%=storeSeeOrderList.get(i).getImage1()%>"
 																			class="itempic J_ItemImg"> </a>
 																</div>
 																<div class="item-info">
@@ -612,17 +622,15 @@
 																<li class="td td-status">
 																	<div class="item-status">
 																		<!-- <p class="Mystatus"><%=status_%></p> -->
-																		<div class="am-btn am-btn-danger anniu">
+																		<div class="move-right">
 																			<%
 																				if (status_.equals("已付款未发货")) {
 																			%>
-																			<a
-																				href="./servlet/SendOrderCtrl?sendOrder_orderId=<%=storeSeeOrderList.get(i).getOrderId()%>">
-																				发货 </a>
+																				<input value="发货" type="button" name="send_bt<%=storeSeeOrderList.get(i).getOrderId()%>" class="am-btn am-btn-danger anniu" onclick="send(<%=storeSeeOrderList.get(i).getOrderId()%>)" >
 																			<%
 																				} else {
 																			%>
-																			<a style="cursor: default;"> 发货 </a>
+																				<input value="发货" disabled="disabled" type="button" name="send_bt<%=storeSeeOrderList.get(i).getOrderId()%>" class="am-btn am-btn-danger anniu">
 																			<%
 																				}
 																			%>
@@ -642,6 +650,10 @@
 											</div>
 										</div>
 									</div>
+									<br>
+									<br>
+									<br>
+									<br>
 									<%
 										}
 											}
@@ -768,7 +780,7 @@
 															<li class="td td-item">
 																<div class="item-pic">
 																	<a href="#" class="J_MakePoint"> <!-- 商品图片 --> <img
-																			src="./images/kouhong.jpg_80x80.jpg"
+																			src="/PhoneHub/Image/<%=storeSeeOrderList.get(i).getImage1()%>"
 																			class="itempic J_ItemImg"> </a>
 																</div>
 																<div class="item-info">
@@ -813,17 +825,15 @@
 																<li class="td td-status">
 																	<div class="item-status">
 																		<!-- <p class="Mystatus"><%=status_%></p> -->
-																		<div class="am-btn am-btn-danger anniu">
+																		<div class="move-right">
 																			<%
 																				if (status_.equals("已付款未发货")) {
 																			%>
-																			<a
-																				href="./servlet/SendOrderCtrl?sendOrder_orderId=<%=storeSeeOrderList.get(i).getOrderId()%>">
-																				发货 </a>
+																				<input value="发货" type="button" name="send_bt<%=storeSeeOrderList.get(i).getOrderId()%>" class="am-btn am-btn-danger anniu" onclick="send(<%=storeSeeOrderList.get(i).getOrderId()%>)" >
 																			<%
 																				} else {
 																			%>
-																			<a style="cursor: default;"> 发货 </a>
+																				<input value="发货" disabled="disabled" type="button" name="send_bt<%=storeSeeOrderList.get(i).getOrderId()%>" class="am-btn am-btn-danger anniu">
 																			<%
 																				}
 																			%>
@@ -843,6 +853,10 @@
 											</div>
 										</div>
 									</div>
+									<br>
+									<br>
+									<br>
+									<br>
 									<%
 										}
 											}
@@ -970,7 +984,7 @@
 															<li class="td td-item">
 																<div class="item-pic">
 																	<a href="#" class="J_MakePoint"> <!-- 商品图片 --> <img
-																			src="./images/kouhong.jpg_80x80.jpg"
+																			src="/PhoneHub/Image/<%=storeSeeOrderList.get(i).getImage1()%>"
 																			class="itempic J_ItemImg"> </a>
 																</div>
 																<div class="item-info">
@@ -1015,17 +1029,15 @@
 																<li class="td td-status">
 																	<div class="item-status">
 																		<!-- <p class="Mystatus"><%=status_%></p> -->
-																		<div class="am-btn am-btn-danger anniu">
+																		<div class="move-right">
 																			<%
 																				if (status_.equals("已付款未发货")) {
 																			%>
-																			<a
-																				href="./servlet/SendOrderCtrl?sendOrder_orderId=<%=storeSeeOrderList.get(i).getOrderId()%>">
-																				发货 </a>
+																				<input value="发货" type="button" name="send_bt<%=storeSeeOrderList.get(i).getOrderId()%>" class="am-btn am-btn-danger anniu" onclick="send(<%=storeSeeOrderList.get(i).getOrderId()%>)" >
 																			<%
 																				} else {
 																			%>
-																			<a style="cursor: default;"> 发货 </a>
+																				<input value="发货" disabled="disabled" type="button" name="send_bt<%=storeSeeOrderList.get(i).getOrderId()%>" class="am-btn am-btn-danger anniu">
 																			<%
 																				}
 																			%>
@@ -1045,6 +1057,10 @@
 											</div>
 										</div>
 									</div>
+									<br>
+									<br>
+									<br>
+									<br>
 									<%
 										}
 											}
@@ -1164,7 +1180,7 @@
 															<li class="td td-item">
 																<div class="item-pic">
 																	<a href="#" class="J_MakePoint"> <!-- 商品图片 --> <img
-																			src="./images/kouhong.jpg_80x80.jpg"
+																			src="/PhoneHub/Image/<%=storeSeeOrderList.get(i).getImage1()%>"
 																			class="itempic J_ItemImg"> </a>
 																</div>
 																<div class="item-info">
@@ -1209,17 +1225,15 @@
 																<li class="td td-status">
 																	<div class="item-status">
 																		<!-- <p class="Mystatus"><%=status_%></p> -->
-																		<div class="am-btn am-btn-danger anniu">
+																		<div class="move-right">
 																			<%
 																				if (status_.equals("已付款未发货")) {
 																			%>
-																			<a
-																				href="./servlet/SendOrderCtrl?sendOrder_orderId=<%=storeSeeOrderList.get(i).getOrderId()%>">
-																				发货 </a>
+																				<input value="发货" type="button" name="send_bt<%=storeSeeOrderList.get(i).getOrderId()%>" class="am-btn am-btn-danger anniu" onclick="send(<%=storeSeeOrderList.get(i).getOrderId()%>)" >
 																			<%
 																				} else {
 																			%>
-																			<a style="cursor: default;"> 发货 </a>
+																				<input value="发货" disabled="disabled" type="button" name="send_bt<%=storeSeeOrderList.get(i).getOrderId()%>" class="am-btn am-btn-danger anniu">
 																			<%
 																				}
 																			%>
@@ -1239,6 +1253,10 @@
 											</div>
 										</div>
 									</div>
+									<br>
+									<br>
+									<br>
+									<br>
 									<%
 										}
 											}
@@ -1252,48 +1270,5 @@
 
 				</div>
 			</div>
-			<aside class="menu">
-			<ul>
-				<li class="person active">
-					<a href="index.html"><i class="am-icon-user"></i>个人中心</a>
-				</li>
-				<li class="person">
-					<p>
-						<i class="am-icon-newspaper-o"></i>个人资料
-					</p>
-					<ul>
-						<li>
-							<a href="information.html">个人信息</a>
-						</li>
-						<li>
-							<a href="address.html">地址管理</a>
-						</li>
-					</ul>
-				</li>
-				<li class="person">
-					<p>
-						<i class="am-icon-balance-scale"></i>我的交易
-					</p>
-					<ul>
-						<li>
-							<a href="./servlet/StoreSeeOrderCtrl?select=2">订单管理</a>
-						</li>
-					</ul>
-				</li>
-				<li class="person">
-					<p>
-						<i class="am-icon-dollar"></i>我的资产
-					</p>
-					<ul>
-						<li>
-							<a href="walletlist.html">账户余额</a>
-						</li>
-					</ul>
-				</li>
-			</ul>
-			</aside>
-		</div>
-		
-
 	</body>
 </html>

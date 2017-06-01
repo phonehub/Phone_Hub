@@ -30,8 +30,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<link href="./css/cartstyle.css" rel="stylesheet" type="text/css" />
 		<link href="./css/optstyle.css" rel="stylesheet" type="text/css" />
 
-		<script type="text/javascript" src="./js/jquery.js"></script>
-  </head>
+		<script type="text/javascript" src="./js/jquery.js"></script>  
+  </head> 
   
   <body>
   
@@ -53,13 +53,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="topMessage">
 					<div class="menu-hd">
 						<a href="#" target="_top" class="h">亲，请登录</a>
-						<a href="#" target="_top">免费注册</a>
+						<a href="#" target="_top">免费注册</a> 
 					</div>
 				</div>
 			</ul>
 			<ul class="message-r">
-				<div class="topMessage home">
-					<div class="menu-hd"><a href="#" target="_top" class="h">商城首页</a></div>
+				<div class="topMessage home"> 
+					<div class="menu-hd"><a href="./index.jsp" target="_top" class="h">商城首页</a></div>
 				</div>
 				<div class="topMessage my-shangcheng">
 					<div class="menu-hd MyShangcheng"><a href="./servlet/ConsumerSeeOrderCtrl" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
@@ -150,7 +150,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<li class="td td-item">
 										<div class="item-pic">
 											<a href="#" target="_blank" data-title=<%=shopcartList.get(i).getProductName() %> class="J_MakePoint" data-point="tbcart.8.12">
-												<img src="./images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg"></a>
+												<img src="/PhoneHub/Image/<%=shopcartList.get(i).getImage()%>" width="80px" height="80px" class="itempic J_ItemImg"></a>
 										</div>
 										<div class="item-info">
 											<div class="item-basic-info">

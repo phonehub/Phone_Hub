@@ -43,6 +43,9 @@ public class AddToCart extends HttpServlet {
 			productId = Integer.parseInt((String) request
 					.getParameter("productId"));
 		}
+		System.out.println("AddToCart-----getnum="+request.getParameter("num"));
+		System.out.println("AddToCart-----getproductId="+request.getParameter("productId"));
+		
 		int num = Integer.parseInt((String) request.getParameter("num"));
 		// CartItem ci = new CartItem();
 		HttpSession session = request.getSession();

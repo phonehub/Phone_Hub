@@ -224,7 +224,7 @@ function formsubmit() {
 									<li class="td td-item">
 										<div class="item-pic">
 											<a href="#" target="_blank" class="J_MakePoint" data-point="tbcart.8.12">
-												<img src="<%=item.getProduct().getImage1()%>" class="itempic J_ItemImg"></a>
+												<img src="/PhoneHub/Image/<%=item.getProduct().getImage1()%>" width="80px" height="80px" class="itempic J_ItemImg"></a>
 										</div>
 										<div class="item-info">
 										
@@ -316,13 +316,8 @@ function formsubmit() {
 								<span>结&nbsp;算</span></a>
 								
 						</div>
-						
-						
-					
 					</div>
-	   
 				</div>
-
 	 <% 
          }
      %>

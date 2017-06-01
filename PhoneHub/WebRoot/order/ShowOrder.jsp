@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<link href="./basic/css/demo.css" rel="stylesheet" type="text/css" />
 		<link href="./css/cartstyle.css" rel="stylesheet" type="text/css" />
 
-		<link href="./css/jsstyle.css" rel="stylesheet" type="text/css" />
+		<link href="./css/jsstyle.css" rel="stylesheet" type="text/css" /> 
 
 		<script type="text/javascript" src="./js/address.js"></script>
 
@@ -42,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	 	//out.write("界面----showOrder="+showOrder.toString());
   	 	ArrayList<OrderProductInfo> productInfo = showOrder.getProductInfo();
   	 	
-  	 	String name = null;
+  	 	String name = null; 
 		String phone = null;
 		String province = null;
 		String city = null;
@@ -56,7 +56,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		else{ 
 			name = showOrder.getName();
 			phone = showOrder.getPhone();
-			province = showOrder.getProvince();
+			province = showOrder.getProvince(); 
 			city = showOrder.getCity();
 			detailAddress = showOrder.getDetailAddress();
 		}
@@ -82,7 +82,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</ul>
 			<ul class="message-r">
 				<div class="topMessage home">
-					<div class="menu-hd"><a href="#" target="_top" class="h">商城首页</a></div>
+					<div class="menu-hd"><a href="./index.jsp" target="_top" class="h">商城首页</a></div>
 				</div>
 				<div class="topMessage my-shangcheng">
 					<div class="menu-hd MyShangcheng"><a href="./servlet/ConsumerSeeOrderCtrl" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
@@ -100,7 +100,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li><img src="./images/logobig.png" /></li>
 				</div>
 
-<script>
+<script>  
 	function search() {
 		var searchInfo = document.getElementById("searchInput").value;
 		alert("searchInfo=" + searchInfo);
@@ -216,7 +216,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<li class="td td-item">
 													<div class="item-pic">
 														<a href="#" class="J_MakePoint">
-															<img src="./images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg"></a>
+															<img src="/PhoneHub/Image/<%=productInfo.get(i).getImage1()%>" width="80ps" height="80ps" class="itempic J_ItemImg"></a>
 													</div>
 													<div class="item-info">
 														<div class="item-basic-info">

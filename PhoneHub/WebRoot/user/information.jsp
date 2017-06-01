@@ -61,20 +61,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="topMessage favorite">
 						
 						</ul>
-					
+					<div class="clear"></div>
 						<!--悬浮搜索框-->
 
-							</div>
-  	                            <div class="nav white" >
+						<div class="nav white">
 							<div class="logoBig">
-								<li><img  src="../Image/logo.jpg" width="200px" alt="" /></li>
+								<li><img src="../Image/logo.jpg" /></li>
 							</div>
-
+							<script>
+								function search(){
+									var searchInfo = document.getElementById("searchInput").value;
+									alert("searchInfo="+searchInfo);
+									var search_form = document.getElementById("search_form");
+									search_form.action="../servlet/SearchProductCtrl?searchType=商品&searchInfo="+searchInfo;
+									search_form.submit();
+								}
+							</script>
+							
 							<div class="search-bar pr">
 								<a name="index_none_header_sysc" href="#"></a>
-								<form>
+								<form id="search_form" action="" method="post">
 									<input id="searchInput" name="index_none_header_sysc" type="text" placeholder="搜索" autocomplete="off">
-									<input id="ai-topsearch" class="submit am-btn" value="搜索" index="1" type="submit">
+									<input onclick="search()" id="ai-topsearch" class="submit am-btn" value="搜索" index="1" type="submit">
 								</form>
 							</div>
 						</div>
@@ -168,21 +176,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 				</div>
 				<!--底部-->
-				<div class="footer">
-					<div class="footer-hd">
-						<p>
-						
-						</p>
+					<div class="footer">
+						<div>
+							<p align="center">
+								Copyright &copy; 2017.PhoneHub Technology.
+							</p>
+						</div>
 					</div>
-					<div class="footer-bd">
-						<p>
-							<a href="#">关于恒望</a>
-							<a href="#">合作伙伴</a>
-							<a href="#">联系我们</a>
-							<a href="#">网站地图</a>
-						</p>
-					</div>
-				</div>
 			</div>
 
 			<aside class="menu">
@@ -203,7 +203,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li class="person">
 						<p><i class="am-icon-balance-scale"></i>我的交易</p>
 						<ul>
-							<li><a href="order.html">订单管理</a></li>
+							<li><a href="../servlet/ConsumerSeeOrderCtrl">订单管理</a></li>
 							
 						</ul>
 					</li>
