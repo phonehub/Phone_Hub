@@ -37,7 +37,7 @@ public class RegisterCtrl extends HttpServlet {
 
 		try {
 
-			if (reg.Insert(user) == true) {
+			if (reg.Insert(user) == true && reg.aleardyExist(userName)) {
 				LoginServices ls = new LoginServices();
 				user = ls.checkUserNameAndPassword(user);
 				msg = "恭喜，注册成功";
@@ -65,9 +65,9 @@ public class RegisterCtrl extends HttpServlet {
 				return;
 
 			} else {
-
 				msg = "很遗憾，注册失败了，再试一次？";
-				out.println(msg);
+
+				System.out.println(msg);
 				resultJson.put("flag", "false");
 				out.println(resultJson);
 				out.flush();
