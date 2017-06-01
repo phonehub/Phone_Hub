@@ -285,7 +285,7 @@ a:after {
         3.0 BANNER SECTION
 ========================================== */
 #banner-section{
-    background: url(../img/banner.jpg);
+    background: url(../Image/index/banner.jpg);
     background-size: cover;
 	padding-top: 82px;
 }
