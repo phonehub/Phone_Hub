@@ -22,4 +22,5 @@ public class UserService {
 			SQLException {
 		return userdao.delete(user);
 	}
+
 }

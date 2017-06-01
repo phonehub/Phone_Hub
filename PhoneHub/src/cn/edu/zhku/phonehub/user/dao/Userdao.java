@@ -65,4 +65,21 @@ public class Userdao {
 		return false;
 	}
 
+	public boolean getUserByName(String name) throws Exception {
+
+		Connection conn = ConnectionManager.getConnection();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sqlQuery = "Select * from user_table where userName =?";
+		ps = conn.prepareStatement(sqlQuery);
+		ps.setString(1, name);
+		rs = ps.executeQuery();
+		if (rs.next()) {
+			return false;
+		}
+
+		return true;
+
+	}
+
 }
