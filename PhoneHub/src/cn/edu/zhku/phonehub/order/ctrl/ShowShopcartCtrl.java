@@ -24,9 +24,9 @@ public class ShowShopcartCtrl extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html");
 		//获得用户名字
-		//int userId = (Integer) request.getSession().getAttribute("userId");
+		int userId = (Integer) request.getSession().getAttribute("userId");
 		//测试用
-		int userId = 3;
+		//int userId = 3;
 		System.out.println("ctrl-----userId="+userId);
 		
 		

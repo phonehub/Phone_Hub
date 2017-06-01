@@ -23,8 +23,8 @@ public class ConsumerSeeOrderCtrl extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html");
 		
-		//int userId = (Integer) request.getSession().getAttribute("userId");
-		int userId = 3;
+		int userId = (Integer) request.getSession().getAttribute("userId");
+		//int userId = 3;
 		System.out.println("consumerSeeOrderCtrl------userId="+userId);
 		//显示要显示的页数
 		String page = request.getParameter("page");

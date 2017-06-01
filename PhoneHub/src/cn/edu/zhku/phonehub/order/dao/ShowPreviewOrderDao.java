@@ -30,7 +30,7 @@ public class ShowPreviewOrderDao {
 		//获取订单预览信息
 		String sqlQuery = null;
 		//这里没有传入userId的参数
-		sqlQuery = "Select * from showPreviewOrder where userName = ?,ifDefault=1";
+		sqlQuery = "Select * from showPreviewOrder where userName = ? and ifDefault=1";
 		ps = conn.prepareStatement(sqlQuery);
 		ps.setString(1, userName);
 		rs = ps.executeQuery();

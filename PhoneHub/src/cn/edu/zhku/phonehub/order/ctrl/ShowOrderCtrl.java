@@ -45,8 +45,8 @@ public class ShowOrderCtrl extends HttpServlet {
 //		System.out.println("showOrderCtrl-----shopCart"+shopCart);
 		
 		//获得用户名字
-		//String userName = (String) request.getSession().getAttribute("userName");
-		String userName = "pppp";
+		String userName = (String) request.getSession().getAttribute("userName");
+		//String userName = "pppp";
 		System.out.println("ShowOrderCrtl-----getuserName="+userName);
 		//String[]中的每个值为购物车中选中商品的id 
 		//前台要确保有选中至少一个，才可以跳转到这个Servlet
