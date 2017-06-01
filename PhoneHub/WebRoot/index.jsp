@@ -90,7 +90,7 @@
 						<a href="#screenshots-section" class="smoothScroll">商城首页</a>
 					</li>
 					<li>
-						<a href="#pricing-section" class="smoothScroll">注册</a>
+						<a href="../PhoneHub/user/register.html" class="smoothScroll">注册</a>
 					</li>
 					<li>
 						<a href="../PhoneHub/user/login.html" class="smoothScroll hidden-sm">登录</a>
